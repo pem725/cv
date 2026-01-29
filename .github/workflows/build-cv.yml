@@ -1,0 +1,54 @@
+name: Build CV and Biosketch PDFs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Rebuild weekly on Mondays at 6am UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+
+    - name: Install TinyTeX
+      run: |
+        quarto install tinytex
+
+    - name: Render CV
+      run: |
+        quarto render cv.qmd --to pdf
+        mv cv.pdf "McKnight_CV_$(date +%Y-%m-%d).pdf"
+        cp "McKnight_CV_$(date +%Y-%m-%d).pdf" McKnight_CV.pdf
+
+    - name: Render NIH Biosketch
+      run: |
+        quarto render nih-biosketch.qmd --to pdf
+        mv nih-biosketch.pdf "McKnight_NIH_Biosketch_$(date +%Y-%m-%d).pdf"
+        cp "McKnight_NIH_Biosketch_$(date +%Y-%m-%d).pdf" McKnight_NIH_Biosketch.pdf
+
+    - name: Upload CV artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: cv-pdfs
+        path: |
+          *.pdf
+
+    - name: Commit and push PDFs
+      if: github.event_name != 'pull_request'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add *.pdf
+        git diff --staged --quiet || git commit -m "Auto-update PDFs $(date +%Y-%m-%d)"
+        git push

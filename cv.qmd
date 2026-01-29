@@ -1,0 +1,186 @@
+---
+title: "Patrick E. McKnight, Ph.D."
+format:
+  pdf:
+    documentclass: article
+    geometry:
+      - margin=0.75in
+    fontsize: 11pt
+    colorlinks: true
+    linkcolor: NavyBlue
+    urlcolor: NavyBlue
+    include-in-header:
+      text: |
+        \usepackage{fancyhdr}
+        \usepackage{lastpage}
+        \usepackage{xcolor}
+        \definecolor{accent}{RGB}{0, 102, 153}
+        \definecolor{lightgray}{RGB}{150, 150, 150}
+        \pagestyle{fancy}
+        \fancyhf{}
+        \renewcommand{\headrulewidth}{0pt}
+        \fancyfoot[C]{\textcolor{lightgray}{\small Patrick E. McKnight, Ph.D. — Page \thepage\ of \pageref{LastPage}}}
+        \fancyfoot[R]{\textcolor{lightgray}{\small Generated: \today}}
+---
+
+\begin{center}
+{\LARGE \textbf{\textcolor{accent}{Patrick E. McKnight, Ph.D.}}}
+
+\vspace{0.2cm}
+
+Associate Professor of Psychology\\
+George Mason University\\
+Fairfax, VA 22030
+
+\vspace{0.1cm}
+
+\href{mailto:pmcknigh@gmu.edu}{pmcknigh@gmu.edu} |
+\href{https://psychology.gmu.edu/people/pmcknigh}{GMU Profile} |
+\href{https://scholar.google.com/citations?user=sH44LC4AAAAJ}{Google Scholar}
+
+\vspace{0.3cm}
+\hrule
+\end{center}
+
+## Research Interests
+
+Measurement methodology, missing data analysis, program evaluation, psychological assessment, purpose in life, trust, anxiety, depression, and health psychology. Expertise spans medicine (rehabilitation, cardiology, rheumatology, gerontology), psychology (substance abuse, neuroscience, well-being), and education with emphasis on quantitative methods.
+
+## Education
+
+| Degree | Institution | Year | Field |
+|--------|-------------|------|-------|
+| Ph.D. | University of Arizona | 1997 | Clinical Psychology |
+| M.S. | University of Arizona | 1992 | Exercise & Sport Sciences |
+| B.S. | University of Notre Dame | 1988 | Mechanical Engineering |
+
+**Dissertation:** *Calibration of Psychological Measures: An Illustration of Three Quantitative Calibration Procedures*
+**Chair:** Lee Sechrest, Ph.D.
+
+## Academic Appointments
+
+### Current
+
+**Associate Professor** | George Mason University | 2008 – Present
+Department of Psychology, Fairfax, VA
+
+- Founding member, Measurement, Research methodology, Evaluation, and Statistics group (MRES)
+- Director of graduate training in quantitative methods
+- Primary teaching: Statistics, Multiple Regression, Bayesian Statistics, Psychopathology
+
+### Previous
+
+**Assistant Professor** | George Mason University | 2006 – 2008
+Department of Psychology
+
+**Research Assistant Professor** | University of Arizona | 2002 – 2006
+Department of Psychology, Evaluation Group for Analysis of Data (EGAD)
+
+**Health Sciences Specialist** | VA Puget Sound Health Care System | 1999 – 2001
+Center of Excellence in Substance Abuse Treatment and Education (CESATE), Seattle, WA
+
+**Psychology Intern** | University of Washington Medical School | 1998 – 1999
+Department of Psychiatry and Behavioral Sciences (APA-accredited)
+
+## Professional Affiliations
+
+- American Evaluation Association (Chair, Quantitative Methods TIG)
+- American Psychological Association
+- Association for Psychological Science
+- Society for the Science of Clinical Psychology
+
+## Citation Metrics
+
+**Total Citations:** 17,400+ | **h-index:** 60+ | **i10-index:** 100+
+
+*Metrics from [Google Scholar](https://scholar.google.com/citations?user=sH44LC4AAAAJ)*
+
+## Selected Publications
+
+### Books
+
+McKnight, P.E., McKnight, K.M., Sidani, S., & Figueredo, A.J. (2007). *Missing Data: A Gentle Introduction*. New York: Guilford Press.
+
+### Recent Peer-Reviewed Articles
+
+Kashdan, T.B., McKnight, P.E., Kelso, K., Craig, L., & Gross, M. (2025). Enhancing curiosity with a wise intervention to improve political conversations and relationships. *Scientific Reports*.
+
+McKnight, P.E., Kashdan, T.B., MacKay, A., Kelso, K., & Gross, M. (in press). Purpose and happiness: A comparison. *Journal of Positive Psychology*.
+
+Kashdan, T.B., McKnight, P.E., Kelso, K., Craig, L., Guenoun, B., & Naughton, C. (2025). Multiple dimensions of workplace curiosity: Evidence of generalizability in nine countries. *Personality and Individual Differences*.
+
+Kashdan, T.B., Goodman, F.R., Disabato, D.J., McKnight, P.E., Kelso, K., & Naughton, C. (2020). Curiosity has comprehensive benefits in the workplace: Developing and validating a multidimensional workplace curiosity scale in United States and German employees. *Personality and Individual Differences*, 155, 109717.
+
+Kashdan, T.B., Stiksma, M.C., Disabato, D., McKnight, P.E., Bekier, J., Kaji, J., & Lazarus, R. (2018). The five-dimensional curiosity scale: Capturing the bandwidth of curiosity and identifying four unique subgroups of curious people. *Journal of Research in Personality*, 73, 130-149.
+
+Kashdan, T.B., & McKnight, P.E. (2013). Commitment to a purpose in life: An antidote to the suffering by individuals with social anxiety disorder. *Emotion*, 13, 1150-1159.
+
+### Classic/Foundational Works
+
+Sechrest, L., McKnight, P., & McKnight, K. (1996). Calibration of measures for psychotherapy outcome studies. *American Psychologist*, 51(10), 1065-1071.
+
+Figueredo, A.J., McKnight, P.E., McKnight, K.M., & Sidani, S. (2000). Multivariate modeling of missing data within and across assessment waves. *Addiction*, 95(Suppl 3), 361-380.
+
+Baer, J.S., Kivlahan, D.R., Blume, A., McKnight, P.E., & Marlatt, G.A. (2001). Brief intervention for heavy drinking college students: Four-year follow-up and natural history. *American Journal of Public Health*, 91(8), 1310-1316.
+
+## Selected Grants & Funding
+
+**Co-Investigator** | Koch Foundation | 2016 – 2021
+"Distinguishing extraordinarily happy from psychologically flexible people: A multi-method study of optimal human functioning"
+PI: Todd Kashdan
+
+**Co-Investigator** | Australian Research Council | 2014 – 2018
+"Identifying the biopsychosocial factors promoting healthy, productive, and fulfilling transitions from high school: A seven-year longitudinal study"
+
+**Co-Investigator** | National Institutes of Health (R01) | 2016 – 2021
+"Prospective determination of neurobehavioral risk for the development of emotion disorders"
+
+**Co-Investigator** | NIAMS | 2003 – 2007
+"Multidimensional Intervention in Osteoarthritis" ($2.6M)
+
+**Co-Investigator** | Arthritis Foundation | 2002 – 2006
+"Positive Mental Health and Outcomes in Osteoarthritis" ($313,500)
+
+**Principal Investigator** | Department of Energy/TMEC | 2001 – 2002
+"Tucson Energy Baseline Study" ($19,000)
+
+## Teaching
+
+### Graduate Courses
+- PSYC 611: Statistics in Psychology
+- PSYC 612: Multiple Regression
+- PSYC 860: Advanced Quantitative Methods
+- PSYC 861: Bayesian Statistics
+- PSYC 864: Structural Equation Modeling
+
+### Undergraduate Courses
+- PSYC 325: Psychopathology
+- PSYC 405: Mystery, Madness & Murder
+- PSYC 300: Personality Theory
+
+## Software & Technical Skills
+
+**Statistical Software:** R, SAS, SPSS, Python, Stan, JAGS
+**Structural Equation Modeling:** lavaan, Mplus, EQS, LISREL
+**Item Response Theory:** mirt, ltm, Winsteps
+**Programming:** R, Python, SQL, LaTeX, Quarto
+**Version Control:** Git, GitHub
+
+## Service
+
+### Editorial
+- *Journal of Consulting and Clinical Psychology* – Ad hoc reviewer
+- *Psychological Assessment* – Ad hoc reviewer
+- *Evaluation and Program Planning* – Ad hoc reviewer
+- *Psychological Methods* – Ad hoc reviewer
+
+### Professional
+- American Evaluation Association, Chair, Quantitative Methods TIG (2001–2005)
+- NIH Study Section reviewer
+- NSF Panel reviewer
+
+---
+
+\begin{center}
+\textcolor{lightgray}{\small This CV is automatically generated and maintained at \href{https://github.com/pem725/cv}{github.com/pem725/cv}}
+\end{center}
