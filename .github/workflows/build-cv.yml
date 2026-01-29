@@ -1,4 +1,4 @@
-name: Build CV and Biosketch PDFs
+name: Build CV and Biosketch
 
 on:
   push:
@@ -18,6 +18,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install Python dependencies
+      run: |
+        pip install -r requirements.txt
+
     - name: Setup Quarto
       uses: quarto-dev/quarto-actions/setup@v2
 
@@ -25,7 +34,12 @@ jobs:
       run: |
         quarto install tinytex
 
-    - name: Render CV
+    - name: Render CV (HTML)
+      run: |
+        quarto render cv.qmd --to html
+        mv cv.html index.html
+
+    - name: Render CV (PDF)
       run: |
         quarto render cv.qmd --to pdf
         mv cv.pdf "McKnight_CV_$(date +%Y-%m-%d).pdf"
@@ -37,14 +51,25 @@ jobs:
         mv nih-biosketch.pdf "McKnight_NIH_Biosketch_$(date +%Y-%m-%d).pdf"
         cp "McKnight_NIH_Biosketch_$(date +%Y-%m-%d).pdf" McKnight_NIH_Biosketch.pdf
 
-    - name: Upload CV artifact
+    - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: cv-pdfs
+        name: cv-outputs
         path: |
           *.pdf
+          index.html
+          custom.scss
+          *_files/
 
-    - name: Commit and push PDFs
+    - name: Deploy to GitHub Pages
+      if: github.event_name != 'pull_request'
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .
+        keep_files: true
+
+    - name: Commit PDFs
       if: github.event_name != 'pull_request'
       run: |
         git config --local user.email "action@github.com"

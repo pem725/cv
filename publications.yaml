@@ -1,0 +1,283 @@
+# Publications data for Patrick E. McKnight, Ph.D.
+# This file is the single source of truth for all CV documents
+# Update this file and rebuild to update all outputs
+
+scholar_id: "sH44LC4AAAAJ"
+orcid: "0000-0002-9067-9066"
+era_commons: "pmcknight"
+
+# Metrics (update manually or via script)
+metrics:
+  total_citations: 17454
+  h_index: 62
+  i10_index: 108
+  last_updated: "2026-01-29"
+
+# Education
+education:
+  - degree: "Ph.D."
+    institution: "University of Arizona"
+    location: "Tucson, AZ"
+    year: 1997
+    field: "Clinical Psychology"
+    details: "Dissertation: Calibration of Psychological Measures. Chair: Lee Sechrest, Ph.D."
+
+  - degree: "M.S."
+    institution: "University of Arizona"
+    location: "Tucson, AZ"
+    year: 1992
+    field: "Exercise & Sport Sciences"
+    details: "Thesis: The effects of cohesion and identifiability on social loafing."
+
+  - degree: "B.S."
+    institution: "University of Notre Dame"
+    location: "Notre Dame, IN"
+    year: 1988
+    field: "Mechanical Engineering"
+
+# Employment
+positions:
+  - title: "Associate Professor"
+    institution: "George Mason University"
+    department: "Department of Psychology"
+    location: "Fairfax, VA"
+    start: 2008
+    current: true
+    featured: true
+
+  - title: "Assistant Professor"
+    institution: "George Mason University"
+    department: "Department of Psychology"
+    start: 2006
+    end: 2008
+
+  - title: "Research Assistant Professor"
+    institution: "University of Arizona"
+    department: "Department of Psychology, EGAD"
+    start: 2002
+    end: 2006
+
+  - title: "Health Sciences Specialist"
+    institution: "VA Puget Sound Health Care System"
+    department: "CESATE"
+    location: "Seattle, WA"
+    start: 1999
+    end: 2001
+
+  - title: "Psychology Intern"
+    institution: "University of Washington Medical School"
+    department: "Psychiatry and Behavioral Sciences"
+    start: 1998
+    end: 1999
+
+# Publications organized by type and year
+publications:
+  books:
+    - authors: "McKnight, P.E., McKnight, K.M., Sidani, S., & Figueredo, A.J."
+      year: 2007
+      title: "Missing Data: A Gentle Introduction"
+      publisher: "Guilford Press"
+      location: "New York"
+      citations: 3200
+      category: "methodology"
+
+  articles:
+    # 2025
+    - authors: "Kashdan, T.B., McKnight, P.E., Kelso, K., Craig, L., & Gross, M."
+      year: 2025
+      title: "Enhancing curiosity with a wise intervention to improve political conversations and relationships"
+      journal: "Scientific Reports"
+      citations: 12
+      category: "curiosity"
+
+    - authors: "Kashdan, T.B., McKnight, P.E., Kelso, K., Craig, L., Guenoun, B., & Naughton, C."
+      year: 2025
+      title: "Multiple dimensions of workplace curiosity: Evidence of generalizability in nine countries"
+      journal: "Personality and Individual Differences"
+      citations: 8
+      category: "curiosity"
+
+    - authors: "McKnight, P.E., Kashdan, T.B., MacKay, A., Kelso, K., & Gross, M."
+      year: 2025
+      title: "Purpose and happiness: A comparison"
+      journal: "Journal of Positive Psychology"
+      status: "in press"
+      citations: 5
+      category: "purpose"
+
+    # 2024
+    - authors: "Kashdan, T.B., Harrison, S.H., Polman, E., & Kark, R."
+      year: 2024
+      title: "Curiosity in organizations: Addressing adverse reactions, trade-offs, and multi-level dynamics"
+      journal: "Organizational Behavior and Human Decision Processes"
+      volume: "129"
+      pages: "104274"
+      citations: 45
+      category: "curiosity"
+
+    # 2020
+    - authors: "Kashdan, T.B., Disabato, D.J., Goodman, F.R., & McKnight, P.E."
+      year: 2020
+      title: "The Five-Dimensional Curiosity Scale Revised (5DCR): Briefer subscales while separating overt and covert social curiosity"
+      journal: "Personality and Individual Differences"
+      volume: "157"
+      pages: "109836"
+      citations: 280
+      category: "curiosity"
+
+    - authors: "Kashdan, T.B., Goodman, F.R., Disabato, D.J., McKnight, P.E., Kelso, K., & Naughton, C."
+      year: 2020
+      title: "Curiosity has comprehensive benefits in the workplace"
+      journal: "Personality and Individual Differences"
+      volume: "155"
+      pages: "109717"
+      citations: 195
+      category: "curiosity"
+
+    # 2018
+    - authors: "Kashdan, T.B., Stiksma, M.C., Disabato, D., McKnight, P.E., Bekier, J., Kaji, J., & Lazarus, R."
+      year: 2018
+      title: "The five-dimensional curiosity scale: Capturing the bandwidth of curiosity and identifying four unique subgroups of curious people"
+      journal: "Journal of Research in Personality"
+      volume: "73"
+      pages: "130-149"
+      citations: 520
+      category: "curiosity"
+
+    # 2013
+    - authors: "Kashdan, T.B., & McKnight, P.E."
+      year: 2013
+      title: "Commitment to a purpose in life: An antidote to the suffering by individuals with social anxiety disorder"
+      journal: "Emotion"
+      volume: "13"
+      pages: "1150-1159"
+      citations: 380
+      category: "purpose"
+
+    # Classic works
+    - authors: "Sechrest, L., McKnight, P., & McKnight, K."
+      year: 1996
+      title: "Calibration of measures for psychotherapy outcome studies"
+      journal: "American Psychologist"
+      volume: "51"
+      issue: "10"
+      pages: "1065-1071"
+      citations: 890
+      category: "measurement"
+
+    - authors: "Figueredo, A.J., McKnight, P.E., McKnight, K.M., & Sidani, S."
+      year: 2000
+      title: "Multivariate modeling of missing data within and across assessment waves"
+      journal: "Addiction"
+      volume: "95"
+      issue: "Suppl 3"
+      pages: "361-380"
+      citations: 450
+      category: "methodology"
+
+    - authors: "Baer, J.S., Kivlahan, D.R., Blume, A., McKnight, P.E., & Marlatt, G.A."
+      year: 2001
+      title: "Brief intervention for heavy drinking college students: Four-year follow-up and natural history"
+      journal: "American Journal of Public Health"
+      volume: "91"
+      issue: "8"
+      pages: "1310-1316"
+      citations: 1200
+      category: "intervention"
+
+# Grants
+grants:
+  - title: "Distinguishing extraordinarily happy from psychologically flexible people"
+    funder: "Koch Foundation"
+    role: "Co-Investigator"
+    pi: "Todd Kashdan"
+    start: 2016
+    end: 2021
+    amount: null
+    status: "completed"
+
+  - title: "Prospective determination of neurobehavioral risk for emotion disorders"
+    funder: "NIH R01"
+    role: "Co-Investigator"
+    start: 2016
+    end: 2021
+    status: "completed"
+
+  - title: "Multidimensional Intervention in Osteoarthritis"
+    funder: "NIAMS"
+    role: "Co-Investigator"
+    start: 2003
+    end: 2007
+    amount: 2630000
+    status: "completed"
+
+  - title: "Positive Mental Health and Outcomes in Osteoarthritis"
+    funder: "Arthritis Foundation"
+    role: "Co-Investigator"
+    start: 2002
+    end: 2006
+    amount: 313500
+    status: "completed"
+
+# Research areas for visualization
+research_areas:
+  - name: "Measurement & Methods"
+    weight: 35
+    color: "#4f46e5"
+  - name: "Purpose in Life"
+    weight: 25
+    color: "#0891b2"
+  - name: "Curiosity"
+    weight: 20
+    color: "#059669"
+  - name: "Health Psychology"
+    weight: 15
+    color: "#d97706"
+  - name: "Anxiety & Depression"
+    weight: 5
+    color: "#dc2626"
+
+# Teaching
+courses:
+  graduate:
+    - code: "PSYC 611"
+      title: "Statistics in Psychology"
+    - code: "PSYC 612"
+      title: "Multiple Regression"
+    - code: "PSYC 860"
+      title: "Advanced Quantitative Methods"
+    - code: "PSYC 861"
+      title: "Bayesian Statistics"
+    - code: "PSYC 864"
+      title: "Structural Equation Modeling"
+
+  undergraduate:
+    - code: "PSYC 325"
+      title: "Psychopathology"
+    - code: "PSYC 405"
+      title: "Mystery, Madness & Murder"
+    - code: "PSYC 300"
+      title: "Personality Theory"
+
+# Skills
+skills:
+  statistical:
+    - "R"
+    - "Python"
+    - "SAS"
+    - "Stan"
+    - "JAGS"
+  sem:
+    - "lavaan"
+    - "Mplus"
+    - "EQS"
+  irt:
+    - "mirt"
+    - "ltm"
+    - "Winsteps"
+  programming:
+    - "Python"
+    - "R"
+    - "SQL"
+    - "LaTeX"
+    - "Quarto"

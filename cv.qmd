@@ -1,6 +1,16 @@
 ---
 title: "Patrick E. McKnight, Ph.D."
 format:
+  html:
+    theme:
+      light: [flatly, custom.scss]
+    toc: true
+    toc-location: left
+    toc-title: "Navigation"
+    page-layout: full
+    smooth-scroll: true
+    code-fold: true
+    code-summary: "Show code"
   pdf:
     documentclass: article
     geometry:
@@ -14,173 +24,375 @@ format:
         \usepackage{fancyhdr}
         \usepackage{lastpage}
         \usepackage{xcolor}
-        \definecolor{accent}{RGB}{0, 102, 153}
+        \definecolor{accent}{RGB}{79, 70, 229}
         \definecolor{lightgray}{RGB}{150, 150, 150}
         \pagestyle{fancy}
         \fancyhf{}
         \renewcommand{\headrulewidth}{0pt}
         \fancyfoot[C]{\textcolor{lightgray}{\small Patrick E. McKnight, Ph.D. — Page \thepage\ of \pageref{LastPage}}}
         \fancyfoot[R]{\textcolor{lightgray}{\small Generated: \today}}
+execute:
+  echo: false
+  warning: false
+jupyter: python3
 ---
 
-\begin{center}
-{\LARGE \textbf{\textcolor{accent}{Patrick E. McKnight, Ph.D.}}}
+```{python}
+#| label: setup
+import yaml
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+from datetime import datetime
+from IPython.display import HTML, Markdown, display
 
-\vspace{0.2cm}
+# Load data
+with open('publications.yaml', 'r') as f:
+    data = yaml.safe_load(f)
 
-Associate Professor of Psychology\\
-George Mason University\\
-Fairfax, VA 22030
+# Helper functions
+def format_citation(pub):
+    """Format a publication entry as a citation string."""
+    citation = f"{pub['authors']} ({pub['year']}). {pub['title']}. "
+    if 'journal' in pub:
+        citation += f"*{pub['journal']}*"
+        if 'volume' in pub:
+            citation += f", {pub['volume']}"
+        if 'pages' in pub:
+            citation += f", {pub['pages']}"
+        citation += "."
+    elif 'publisher' in pub:
+        citation += f"{pub.get('location', '')}: {pub['publisher']}."
+    return citation
+```
 
-\vspace{0.1cm}
+::: {.column-page}
 
-\href{mailto:pmcknigh@gmu.edu}{pmcknigh@gmu.edu} |
-\href{https://psychology.gmu.edu/people/pmcknigh}{GMU Profile} |
-\href{https://scholar.google.com/citations?user=sH44LC4AAAAJ}{Google Scholar}
+<div class="hero-section">
+<h1 class="hero-title">Patrick E. McKnight, Ph.D.</h1>
+<p class="hero-subtitle">Associate Professor of Psychology | George Mason University</p>
+<div class="hero-links">
+<a href="mailto:pmcknigh@gmu.edu" class="hero-link">📧 Email</a>
+<a href="https://psychology.gmu.edu/people/pmcknigh" class="hero-link">🏛️ GMU</a>
+<a href="https://scholar.google.com/citations?user=sH44LC4AAAAJ" class="hero-link">📚 Scholar</a>
+<a href="https://orcid.org/0000-0002-9067-9066" class="hero-link">🔗 ORCID</a>
+</div>
+</div>
 
-\vspace{0.3cm}
-\hrule
-\end{center}
+:::
 
-## Research Interests
+## Research Impact {#metrics}
 
-Measurement methodology, missing data analysis, program evaluation, psychological assessment, purpose in life, trust, anxiety, depression, and health psychology. Expertise spans medicine (rehabilitation, cardiology, rheumatology, gerontology), psychology (substance abuse, neuroscience, well-being), and education with emphasis on quantitative methods.
+```{python}
+#| label: metrics-cards
+#| output: asis
 
-## Education
+metrics = data['metrics']
+print(f"""
+<div class="metrics-grid">
+<div class="metric-card">
+<div class="metric-value">{metrics['total_citations']:,}</div>
+<div class="metric-label">Total Citations</div>
+</div>
+<div class="metric-card">
+<div class="metric-value">{metrics['h_index']}</div>
+<div class="metric-label">h-index</div>
+</div>
+<div class="metric-card">
+<div class="metric-value">{metrics['i10_index']}</div>
+<div class="metric-label">i10-index</div>
+</div>
+<div class="metric-card">
+<div class="metric-value">130+</div>
+<div class="metric-label">Publications</div>
+</div>
+</div>
+<p class="metrics-updated">Last updated: {metrics['last_updated']} from <a href="https://scholar.google.com/citations?user={data['scholar_id']}">Google Scholar</a></p>
+""")
+```
 
-| Degree | Institution | Year | Field |
-|--------|-------------|------|-------|
-| Ph.D. | University of Arizona | 1997 | Clinical Psychology |
-| M.S. | University of Arizona | 1992 | Exercise & Sport Sciences |
-| B.S. | University of Notre Dame | 1988 | Mechanical Engineering |
+### Research Focus Areas
 
-**Dissertation:** *Calibration of Psychological Measures: An Illustration of Three Quantitative Calibration Procedures*
-**Chair:** Lee Sechrest, Ph.D.
+```{python}
+#| label: research-areas-chart
 
-## Academic Appointments
+areas = data['research_areas']
+df = pd.DataFrame(areas)
 
-### Current
+fig = go.Figure(data=[go.Pie(
+    labels=df['name'],
+    values=df['weight'],
+    hole=0.4,
+    marker_colors=df['color'],
+    textposition='outside',
+    textinfo='label+percent',
+    pull=[0.05 if i == 0 else 0 for i in range(len(df))]
+)])
 
-**Associate Professor** | George Mason University | 2008 – Present
-Department of Psychology, Fairfax, VA
+fig.update_layout(
+    showlegend=False,
+    margin=dict(t=20, b=20, l=20, r=20),
+    height=350,
+    font=dict(size=12),
+    annotations=[dict(text='Research<br>Focus', x=0.5, y=0.5, font_size=14, showarrow=False)]
+)
 
-- Founding member, Measurement, Research methodology, Evaluation, and Statistics group (MRES)
-- Director of graduate training in quantitative methods
-- Primary teaching: Statistics, Multiple Regression, Bayesian Statistics, Psychopathology
+fig.show()
+```
 
-### Previous
+### Publication Timeline
 
-**Assistant Professor** | George Mason University | 2006 – 2008
-Department of Psychology
+```{python}
+#| label: publications-timeline
 
-**Research Assistant Professor** | University of Arizona | 2002 – 2006
-Department of Psychology, Evaluation Group for Analysis of Data (EGAD)
+# Create publication counts by year
+pubs = data['publications']['articles'] + data['publications']['books']
+years = [p['year'] for p in pubs]
+year_counts = pd.Series(years).value_counts().sort_index()
 
-**Health Sciences Specialist** | VA Puget Sound Health Care System | 1999 – 2001
-Center of Excellence in Substance Abuse Treatment and Education (CESATE), Seattle, WA
+# Fill in missing years
+all_years = range(min(years), max(years) + 1)
+year_counts = year_counts.reindex(all_years, fill_value=0)
 
-**Psychology Intern** | University of Washington Medical School | 1998 – 1999
-Department of Psychiatry and Behavioral Sciences (APA-accredited)
+fig = go.Figure()
 
-## Professional Affiliations
+fig.add_trace(go.Bar(
+    x=list(year_counts.index),
+    y=year_counts.values,
+    marker_color='#4f46e5',
+    hovertemplate='%{x}: %{y} publications<extra></extra>'
+))
 
-- American Evaluation Association (Chair, Quantitative Methods TIG)
-- American Psychological Association
-- Association for Psychological Science
-- Society for the Science of Clinical Psychology
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Publications",
+    height=300,
+    margin=dict(t=20, b=40, l=50, r=20),
+    plot_bgcolor='white',
+    xaxis=dict(tickmode='linear', dtick=5),
+    bargap=0.3
+)
 
-## Citation Metrics
+fig.show()
+```
 
-**Total Citations:** 17,400+ | **h-index:** 60+ | **i10-index:** 100+
+## Education {#education}
 
-*Metrics from [Google Scholar](https://scholar.google.com/citations?user=sH44LC4AAAAJ)*
+```{python}
+#| label: education-table
+#| output: asis
 
-## Selected Publications
+print('<div class="education-list">')
+for edu in data['education']:
+    print(f"""
+<div class="education-item">
+<div class="edu-degree">{edu['degree']} in {edu['field']}</div>
+<div class="edu-institution">{edu['institution']}, {edu['year']}</div>
+{'<div class="edu-details">' + edu['details'] + '</div>' if 'details' in edu else ''}
+</div>
+""")
+print('</div>')
+```
+
+## Academic Positions {#positions}
+
+```{python}
+#| label: positions-timeline
+
+positions = data['positions']
+
+# Create timeline visualization
+fig = go.Figure()
+
+for i, pos in enumerate(positions):
+    start = pos['start']
+    end = pos.get('end', 2026) if not pos.get('current') else 2026
+
+    fig.add_trace(go.Bar(
+        x=[end - start],
+        y=[pos['institution']],
+        base=[start],
+        orientation='h',
+        marker_color='#4f46e5' if pos.get('current') else '#94a3b8',
+        text=pos['title'],
+        textposition='inside',
+        insidetextanchor='middle',
+        hovertemplate=f"<b>{pos['title']}</b><br>{pos['institution']}<br>{start} - {'Present' if pos.get('current') else end}<extra></extra>"
+    ))
+
+fig.update_layout(
+    showlegend=False,
+    height=250,
+    margin=dict(t=20, b=40, l=20, r=20),
+    xaxis=dict(title="Year", range=[1995, 2027]),
+    yaxis=dict(title=""),
+    barmode='overlay',
+    plot_bgcolor='white'
+)
+
+fig.show()
+```
+
+```{python}
+#| label: positions-list
+#| output: asis
+
+print('<div class="positions-list">')
+for pos in data['positions']:
+    end_str = "Present" if pos.get('current') else str(pos.get('end', ''))
+    print(f"""
+<div class="position-item {'current' if pos.get('current') else ''}">
+<div class="pos-title">{pos['title']}</div>
+<div class="pos-org">{pos['institution']} | {pos['department']}</div>
+<div class="pos-dates">{pos['start']} – {end_str}</div>
+</div>
+""")
+print('</div>')
+```
+
+## Selected Publications {#publications}
 
 ### Books
 
-McKnight, P.E., McKnight, K.M., Sidani, S., & Figueredo, A.J. (2007). *Missing Data: A Gentle Introduction*. New York: Guilford Press.
+```{python}
+#| label: books
+#| output: asis
 
-### Recent Peer-Reviewed Articles
+for book in data['publications']['books']:
+    citation = format_citation(book)
+    print(f'<div class="publication-item book">')
+    print(f'<div class="pub-citation">{citation}</div>')
+    if 'citations' in book:
+        print(f'<span class="citation-badge">📖 {book["citations"]:,} citations</span>')
+    print('</div>')
+```
 
-Kashdan, T.B., McKnight, P.E., Kelso, K., Craig, L., & Gross, M. (2025). Enhancing curiosity with a wise intervention to improve political conversations and relationships. *Scientific Reports*.
+### Peer-Reviewed Articles
 
-McKnight, P.E., Kashdan, T.B., MacKay, A., Kelso, K., & Gross, M. (in press). Purpose and happiness: A comparison. *Journal of Positive Psychology*.
+```{python}
+#| label: articles
+#| output: asis
 
-Kashdan, T.B., McKnight, P.E., Kelso, K., Craig, L., Guenoun, B., & Naughton, C. (2025). Multiple dimensions of workplace curiosity: Evidence of generalizability in nine countries. *Personality and Individual Differences*.
+articles = sorted(data['publications']['articles'], key=lambda x: x['year'], reverse=True)
 
-Kashdan, T.B., Goodman, F.R., Disabato, D.J., McKnight, P.E., Kelso, K., & Naughton, C. (2020). Curiosity has comprehensive benefits in the workplace: Developing and validating a multidimensional workplace curiosity scale in United States and German employees. *Personality and Individual Differences*, 155, 109717.
+for article in articles[:15]:  # Show top 15
+    citation = format_citation(article)
+    category = article.get('category', 'other')
+    category_colors = {
+        'curiosity': '#059669',
+        'purpose': '#0891b2',
+        'measurement': '#4f46e5',
+        'methodology': '#7c3aed',
+        'intervention': '#d97706'
+    }
+    color = category_colors.get(category, '#6b7280')
 
-Kashdan, T.B., Stiksma, M.C., Disabato, D., McKnight, P.E., Bekier, J., Kaji, J., & Lazarus, R. (2018). The five-dimensional curiosity scale: Capturing the bandwidth of curiosity and identifying four unique subgroups of curious people. *Journal of Research in Personality*, 73, 130-149.
+    print(f'<div class="publication-item">')
+    print(f'<span class="category-tag" style="background-color: {color};">{category}</span>')
+    print(f'<div class="pub-citation">{citation}</div>')
+    if 'citations' in article:
+        print(f'<span class="citation-badge">📊 {article["citations"]:,} citations</span>')
+    print('</div>')
+```
 
-Kashdan, T.B., & McKnight, P.E. (2013). Commitment to a purpose in life: An antidote to the suffering by individuals with social anxiety disorder. *Emotion*, 13, 1150-1159.
+<p class="more-link"><a href="https://scholar.google.com/citations?user=sH44LC4AAAAJ">View all publications on Google Scholar →</a></p>
 
-### Classic/Foundational Works
+## Research Funding {#grants}
 
-Sechrest, L., McKnight, P., & McKnight, K. (1996). Calibration of measures for psychotherapy outcome studies. *American Psychologist*, 51(10), 1065-1071.
+```{python}
+#| label: grants-chart
 
-Figueredo, A.J., McKnight, P.E., McKnight, K.M., & Sidani, S. (2000). Multivariate modeling of missing data within and across assessment waves. *Addiction*, 95(Suppl 3), 361-380.
+grants = [g for g in data['grants'] if g.get('amount')]
+df = pd.DataFrame(grants)
 
-Baer, J.S., Kivlahan, D.R., Blume, A., McKnight, P.E., & Marlatt, G.A. (2001). Brief intervention for heavy drinking college students: Four-year follow-up and natural history. *American Journal of Public Health*, 91(8), 1310-1316.
+fig = go.Figure(data=[go.Bar(
+    x=df['title'].str[:40] + '...',
+    y=df['amount'],
+    marker_color=['#4f46e5', '#0891b2', '#059669', '#d97706'][:len(df)],
+    text=[f"${a/1e6:.1f}M" if a >= 1e6 else f"${a/1e3:.0f}K" for a in df['amount']],
+    textposition='outside'
+)])
 
-## Selected Grants & Funding
+fig.update_layout(
+    yaxis_title="Funding ($)",
+    height=300,
+    margin=dict(t=40, b=100, l=60, r=20),
+    plot_bgcolor='white',
+    xaxis_tickangle=-30
+)
 
-**Co-Investigator** | Koch Foundation | 2016 – 2021
-"Distinguishing extraordinarily happy from psychologically flexible people: A multi-method study of optimal human functioning"
-PI: Todd Kashdan
+fig.show()
+```
 
-**Co-Investigator** | Australian Research Council | 2014 – 2018
-"Identifying the biopsychosocial factors promoting healthy, productive, and fulfilling transitions from high school: A seven-year longitudinal study"
+```{python}
+#| label: grants-list
+#| output: asis
 
-**Co-Investigator** | National Institutes of Health (R01) | 2016 – 2021
-"Prospective determination of neurobehavioral risk for the development of emotion disorders"
+print('<div class="grants-list">')
+for grant in data['grants']:
+    status_class = 'active' if grant['status'] == 'active' else 'completed'
+    amount_str = f" | ${grant['amount']:,}" if grant.get('amount') else ""
+    print(f"""
+<div class="grant-item {status_class}">
+<div class="grant-title">{grant['title']}</div>
+<div class="grant-meta">{grant['funder']} | {grant['role']}{amount_str}</div>
+<div class="grant-dates">{grant['start']} – {grant['end']}</div>
+</div>
+""")
+print('</div>')
+```
 
-**Co-Investigator** | NIAMS | 2003 – 2007
-"Multidimensional Intervention in Osteoarthritis" ($2.6M)
+## Teaching {#teaching}
 
-**Co-Investigator** | Arthritis Foundation | 2002 – 2006
-"Positive Mental Health and Outcomes in Osteoarthritis" ($313,500)
+::: {.columns}
 
-**Principal Investigator** | Department of Energy/TMEC | 2001 – 2002
-"Tucson Energy Baseline Study" ($19,000)
-
-## Teaching
-
+::: {.column width="50%"}
 ### Graduate Courses
-- PSYC 611: Statistics in Psychology
-- PSYC 612: Multiple Regression
-- PSYC 860: Advanced Quantitative Methods
-- PSYC 861: Bayesian Statistics
-- PSYC 864: Structural Equation Modeling
+```{python}
+#| output: asis
+for course in data['courses']['graduate']:
+    print(f"- **{course['code']}**: {course['title']}")
+```
+:::
 
+::: {.column width="50%"}
 ### Undergraduate Courses
-- PSYC 325: Psychopathology
-- PSYC 405: Mystery, Madness & Murder
-- PSYC 300: Personality Theory
+```{python}
+#| output: asis
+for course in data['courses']['undergraduate']:
+    print(f"- **{course['code']}**: {course['title']}")
+```
+:::
 
-## Software & Technical Skills
+:::
 
-**Statistical Software:** R, SAS, SPSS, Python, Stan, JAGS
-**Structural Equation Modeling:** lavaan, Mplus, EQS, LISREL
-**Item Response Theory:** mirt, ltm, Winsteps
-**Programming:** R, Python, SQL, LaTeX, Quarto
-**Version Control:** Git, GitHub
+## Technical Skills {#skills}
 
-## Service
+```{python}
+#| output: asis
 
-### Editorial
-- *Journal of Consulting and Clinical Psychology* – Ad hoc reviewer
-- *Psychological Assessment* – Ad hoc reviewer
-- *Evaluation and Program Planning* – Ad hoc reviewer
-- *Psychological Methods* – Ad hoc reviewer
+skills = data['skills']
+print('<div class="skills-grid">')
+print('<div class="skill-category"><h4>Statistical Software</h4><div class="skill-tags">')
+for s in skills['statistical']:
+    print(f'<span class="skill-tag">{s}</span>')
+print('</div></div>')
 
-### Professional
-- American Evaluation Association, Chair, Quantitative Methods TIG (2001–2005)
-- NIH Study Section reviewer
-- NSF Panel reviewer
+print('<div class="skill-category"><h4>SEM & IRT</h4><div class="skill-tags">')
+for s in skills['sem'] + skills['irt']:
+    print(f'<span class="skill-tag">{s}</span>')
+print('</div></div>')
+
+print('<div class="skill-category"><h4>Programming</h4><div class="skill-tags">')
+for s in skills['programming']:
+    print(f'<span class="skill-tag">{s}</span>')
+print('</div></div>')
+print('</div>')
+```
 
 ---
 
-\begin{center}
-\textcolor{lightgray}{\small This CV is automatically generated and maintained at \href{https://github.com/pem725/cv}{github.com/pem725/cv}}
-\end{center}
+<div class="footer-note">
+<p>This CV is automatically generated and maintained at <a href="https://github.com/pem725/cv">github.com/pem725/cv</a></p>
+<p>Generated: `{python} datetime.now().strftime('%B %d, %Y')`</p>
+</div>

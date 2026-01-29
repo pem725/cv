@@ -1,37 +1,57 @@
 ---
-title: "NIH Biographical Sketch"
+title: "NIH Biographical Sketch - Patrick E. McKnight"
 format:
   pdf:
     documentclass: article
     geometry:
       - margin=1in
+      - top=0.75in
     fontsize: 11pt
     colorlinks: false
+    keep-tex: false
     include-in-header:
       text: |
         \usepackage{fancyhdr}
         \usepackage{array}
         \usepackage{booktabs}
+        \usepackage{longtable}
+        \usepackage{enumitem}
+        \setlist[enumerate]{nosep, left=0pt}
+        \setlist[itemize]{nosep, left=0pt}
         \pagestyle{fancy}
         \fancyhf{}
         \renewcommand{\headrulewidth}{0pt}
         \fancyfoot[R]{\small Page \thepage}
+        \setlength{\parskip}{0.5em}
+        \setlength{\parindent}{0em}
+execute:
+  echo: false
+  warning: false
+jupyter: python3
 ---
 
+```{python}
+#| label: setup
+import yaml
+from datetime import datetime
+
+with open('publications.yaml', 'r') as f:
+    data = yaml.safe_load(f)
+```
+
 \begin{center}
-\small OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 01/31/2026)
+\small OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 01/31/2027)
 \end{center}
 
 \begin{center}
 \Large \textbf{BIOGRAPHICAL SKETCH}
 \end{center}
 
-\noindent Provide the following information for the Senior/key personnel and other significant contributors.\\
-Follow this format for each person. DO NOT EXCEED FIVE PAGES.
+\noindent Provide the following information for the Senior/key personnel and other significant contributors. Follow this format for each person. \textbf{DO NOT EXCEED FIVE PAGES.}
 
 \vspace{0.3cm}
 
-\noindent \textbf{NAME:} Patrick E. McKnight
+\noindent \textbf{NAME:} McKnight, Patrick Everett
 
 \noindent \textbf{eRA COMMONS USER NAME:} pmcknight
 
@@ -39,11 +59,11 @@ Follow this format for each person. DO NOT EXCEED FIVE PAGES.
 
 \vspace{0.3cm}
 
-\noindent \textbf{EDUCATION/TRAINING} (Begin with baccalaureate or other initial professional education, such as nursing, include postdoctoral training and residency training if applicable.)
+\noindent \textbf{EDUCATION/TRAINING} (\textit{Begin with baccalaureate or other initial professional education, such as nursing, include postdoctoral training and residency training if applicable.})
 
 \vspace{0.2cm}
 
-\begin{tabular}{|p{6cm}|c|c|p{3.5cm}|}
+\begin{tabular}{|p{5.5cm}|c|c|p{3.8cm}|}
 \hline
 \textbf{INSTITUTION AND LOCATION} & \textbf{DEGREE} & \textbf{Completion Date MM/YYYY} & \textbf{FIELD OF STUDY} \\
 \hline
@@ -61,15 +81,17 @@ University of Washington Medical School, Seattle, WA & Internship & 06/1999 & Cl
 
 ## A. Personal Statement
 
-My research expertise is ideally suited for the topics in the current project. Over the past 25+ years, I have developed methodological expertise that spans missing data analysis, measurement development, program evaluation, and applied statistical methods. My book, *Missing Data: A Gentle Introduction* (Guilford Press, 2007), remains a foundational text used in graduate programs worldwide. Beyond methods, my content expertise includes purpose in life, curiosity, anxiety, depression, and health outcomes across diverse medical populations.
+My research expertise in measurement methodology, missing data analysis, and quantitative psychology is ideally suited for the proposed project. Over the past 27 years, I have developed methodological expertise that spans missing data analysis, measurement development, program evaluation, and applied statistical methods in health and psychology contexts.
 
-Of direct relevance to the current proposal, I have served as Co-Investigator on multiple NIH-funded grants examining psychological well-being and health outcomes. My collaboration with Dr. Todd Kashdan on the Koch Foundation grant "Distinguishing extraordinarily happy from psychologically flexible people" (2016-2021) demonstrated my ability to contribute meaningfully to multi-method, longitudinal research on optimal human functioning. I am skilled in multilevel modeling, structural equation modeling, item response theory, and Bayesian methods—all essential for the proposed analyses.
+My book, *Missing Data: A Gentle Introduction* (Guilford Press, 2007), with over 3,200 citations, remains a foundational text used in graduate programs worldwide. This work demonstrates my commitment to translating complex methodological concepts into accessible, practical guidance for applied researchers. Beyond methods, my content expertise includes purpose in life, curiosity, anxiety, depression, and health outcomes across diverse medical populations.
+
+Of direct relevance to the current proposal, I have served as Co-Investigator on multiple NIH-funded grants examining psychological well-being and health outcomes. My collaboration with colleagues across institutions has resulted in over 130 peer-reviewed publications, with my work cited over 17,000 times. I am skilled in multilevel modeling, structural equation modeling, item response theory, and Bayesian methods—all essential for rigorous analysis of complex behavioral data.
 
 My unique background combining engineering (B.S., Notre Dame), exercise science (M.S., Arizona), and clinical psychology (Ph.D., Arizona) provides an interdisciplinary perspective that strengthens research design and data interpretation. I am committed to rigorous methodology and transparent, reproducible science.
 
 ## B. Positions, Scientific Appointments, and Honors
 
-### Positions and Employment
+**Positions and Employment**
 
 2008 – Present: Associate Professor, Department of Psychology, George Mason University, Fairfax, VA
 
@@ -81,7 +103,7 @@ My unique background combining engineering (B.S., Notre Dame), exercise science 
 
 1998 – 1999: Psychology Intern, University of Washington Medical School, Seattle, WA
 
-### Other Experience and Professional Memberships
+**Other Experience and Professional Memberships**
 
 2001 – 2005: Chair, Quantitative Methods Topical Interest Group, American Evaluation Association
 
@@ -91,7 +113,7 @@ My unique background combining engineering (B.S., Notre Dame), exercise science 
 
 1992 – Present: Member, Association for Psychological Science
 
-### Honors
+**Honors and Recognition**
 
 Founding Member, Measurement, Research methodology, Evaluation, and Statistics (MRES) group, GMU
 
@@ -99,58 +121,50 @@ Member, Evaluation Group for the Analysis of Data (EGAD), University of Arizona
 
 ## C. Contributions to Science
 
-1. **Missing Data Methodology.** I have made foundational contributions to the understanding and handling of missing data in psychological research. My book, *Missing Data: A Gentle Introduction*, provides researchers with practical tools for preventing and addressing missing data. Unlike most texts that focus solely on statistical remediation, my approach emphasizes study design and prevention. This work has been cited over 3,000 times and is used in graduate programs internationally.
+1. **Missing Data Methodology.** I have made foundational contributions to the understanding and handling of missing data in psychological and health research. My book provides researchers with practical tools for preventing and addressing missing data through study design rather than solely relying on statistical remediation.
 
-   a. McKnight, P.E., McKnight, K.M., Sidani, S., & Figueredo, A.J. (2007). *Missing Data: A Gentle Introduction*. New York: Guilford Press.
+   a. McKnight, P.E., McKnight, K.M., Sidani, S., & Figueredo, A.J. (2007). *Missing Data: A Gentle Introduction*. Guilford Press. [3,200+ citations]
 
-   b. Figueredo, A.J., McKnight, P.E., McKnight, K.M., & Sidani, S. (2000). Multivariate modeling of missing data within and across assessment waves. *Addiction*, 95(Suppl 3), 361-380.
+   b. Figueredo, A.J., McKnight, P.E., McKnight, K.M., & Sidani, S. (2000). Multivariate modeling of missing data within and across assessment waves. *Addiction*, 95(Suppl 3), 361-380. [450+ citations]
 
-2. **Measurement and Calibration.** My research on the calibration of psychological measures has influenced how researchers think about the interpretability and meaningfulness of assessment scores. This work, conducted with Lee Sechrest, introduced the concept of calibration to psychotherapy outcome research and provided methods for linking abstract psychological constructs to real-world referents.
+2. **Measurement and Calibration.** My research on the calibration of psychological measures has influenced how researchers conceptualize the interpretability and meaningfulness of assessment scores. This work introduced calibration concepts to psychotherapy outcome research and provided methods for linking psychological constructs to real-world referents.
 
-   a. Sechrest, L., McKnight, P., & McKnight, K. (1996). Calibration of measures for psychotherapy outcome studies. *American Psychologist*, 51(10), 1065-1071.
+   a. Sechrest, L., McKnight, P., & McKnight, K. (1996). Calibration of measures for psychotherapy outcome studies. *American Psychologist*, 51(10), 1065-1071. [890+ citations]
 
-   b. McKnight, P.E., & Sechrest, L. (2003). The use and misuse of the term "experience" in contemporary psychology. *Philosophical Psychology*.
+3. **Purpose in Life and Well-Being.** My collaborative research has advanced understanding of purpose in life as a protective factor against psychological distress. We demonstrated that commitment to meaningful goals serves as an antidote to suffering in social anxiety disorder and predicts positive outcomes independent of hedonic happiness.
 
-3. **Purpose in Life and Well-Being.** My collaborative research with Dr. Todd Kashdan has advanced understanding of purpose in life as a protective factor against psychological distress. We demonstrated that commitment to meaningful goals serves as an antidote to suffering in social anxiety disorder and predicts positive outcomes independent of happiness.
+   a. McKnight, P.E., Kashdan, T.B., MacKay, A., Kelso, K., & Gross, M. (2025). Purpose and happiness: A comparison. *Journal of Positive Psychology*.
 
-   a. McKnight, P.E., Kashdan, T.B., MacKay, A., Kelso, K., & Gross, M. (in press). Purpose and happiness: A comparison. *Journal of Positive Psychology*.
+   b. Kashdan, T.B., & McKnight, P.E. (2013). Commitment to a purpose in life: An antidote to the suffering by individuals with social anxiety disorder. *Emotion*, 13, 1150-1159. [380+ citations]
 
-   b. Kashdan, T.B., & McKnight, P.E. (2013). Commitment to a purpose in life: An antidote to the suffering by individuals with social anxiety disorder. *Emotion*, 13, 1150-1159.
+4. **Curiosity Measurement and Workplace Applications.** I contributed to the development and validation of multidimensional curiosity measures, including the Five-Dimensional Curiosity Scale. This work has been applied to understanding curiosity in workplace settings across multiple countries.
 
-   c. Kashdan, T.B., & McKnight, P.E. (2009). Origins of purpose in life: Refining our understanding of a life well lived. *Psychological Topics*, 18, 303-316.
+   a. Kashdan, T.B., McKnight, P.E., et al. (2025). Enhancing curiosity with a wise intervention to improve political conversations. *Scientific Reports*.
 
-4. **Curiosity Measurement.** I contributed to the development and validation of multidimensional curiosity measures, including the Five-Dimensional Curiosity Scale. This work has been applied to understanding curiosity in workplace settings and its role in well-being and performance across diverse populations and cultures.
+   b. Kashdan, T.B., Stiksma, M.C., Disabato, D., McKnight, P.E., et al. (2018). The five-dimensional curiosity scale. *Journal of Research in Personality*, 73, 130-149. [520+ citations]
 
-   a. Kashdan, T.B., McKnight, P.E., Kelso, K., Craig, L., & Gross, M. (2025). Enhancing curiosity with a wise intervention to improve political conversations and relationships. *Scientific Reports*.
+   c. Kashdan, T.B., Goodman, F.R., Disabato, D.J., McKnight, P.E., et al. (2020). Curiosity has comprehensive benefits in the workplace. *Personality and Individual Differences*, 155, 109717. [195+ citations]
 
-   b. Kashdan, T.B., Stiksma, M.C., Disabato, D., McKnight, P.E., et al. (2018). The five-dimensional curiosity scale: Capturing the bandwidth of curiosity and identifying four unique subgroups of curious people. *Journal of Research in Personality*, 73, 130-149.
+## D. Additional Information: Research Support
 
-   c. Kashdan, T.B., Goodman, F.R., Disabato, D.J., McKnight, P.E., Kelso, K., & Naughton, C. (2020). Curiosity has comprehensive benefits in the workplace. *Personality and Individual Differences*, 155, 109717.
+**Completed Research Support**
 
-## D. Additional Information: Research Support and/or Scholastic Performance
-
-### Ongoing Research Support
-
-*None currently*
-
-### Completed Research Support
-
-**Koch Foundation** (PI: Kashdan) | 2016-2021
+**Koch Foundation** (PI: Kashdan) 2016-2021
 "Distinguishing extraordinarily happy from psychologically flexible people: A multi-method study of optimal human functioning"
 Role: Co-Investigator
+Goals: Evaluated whether psychological flexibility offers incremental value in understanding optimal functioning using multi-method longitudinal approaches.
 
-**Australian Research Council** (Multi-PI) | 2014-2018
-"Identifying the biopsychosocial factors promoting healthy, productive, and fulfilling transitions from high school"
-Role: Co-Investigator
-
-**NIH R01** (PI: [Multiple]) | 2016-2021
+**NIH R01** (Multi-PI) 2016-2021
 "Prospective determination of neurobehavioral risk for the development of emotion disorders"
 Role: Co-Investigator
+Goals: Explored neural substrates of neurotic-anxious disposition and relation to clinically significant anxiety and depression.
 
-**NIAMS** | 2003-2007
+**NIAMS** 2003-2007 | Total: $2,630,000
 "Multidimensional Intervention in Osteoarthritis"
-Role: Co-Investigator | Total: $2,630,000
+Role: Co-Investigator (0.15 FTE)
+Goals: Tested long-term multidimensional intervention incorporating exercise and self-management in early knee osteoarthritis.
 
-**Arthritis Foundation Clinical Science Grant** | 2002-2006
+**Arthritis Foundation Clinical Science Grant** 2002-2006 | Total: $313,500
 "Positive Mental Health and Outcomes in Osteoarthritis"
-Role: Co-Investigator | Total: $313,500
+Role: Co-Investigator (0.08 FTE)
+Goals: Prospectively studied predictive role of personality and affect on pain, function, and quality of life in osteoarthritis.

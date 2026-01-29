@@ -1,3 +1,7 @@
+# Virtual environment
+.venv/
+venv/
+
 # Quarto
 .quarto/
 *_files/
