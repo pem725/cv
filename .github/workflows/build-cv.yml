@@ -61,7 +61,7 @@ jobs:
         path: |
           *.pdf
           index.html
-          clean.css
+          clean.scss
 
     - name: Commit updated files to main
       if: github.event_name != 'pull_request'

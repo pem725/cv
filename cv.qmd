@@ -3,13 +3,22 @@ title: "Patrick E. McKnight, Ph.D."
 subtitle: "Associate Professor of Psychology | George Mason University"
 format:
   html:
-    theme: cosmo
-    css: clean.css
+    theme:
+      - cosmo
+      - clean.scss
     toc: true
     toc-location: left
-    toc-title: "Sections"
-    page-layout: article
+    toc-title: "CV Sections"
+    toc-depth: 3
+    page-layout: full
+    grid:
+      sidebar-width: 200px
+      body-width: 700px
+      margin-width: 200px
     smooth-scroll: true
+    number-sections: false
+    anchor-sections: true
+    link-external-newwindow: true
   typst:
     toc: false
     margin:

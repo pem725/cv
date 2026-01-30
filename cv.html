@@ -32,19 +32,18 @@ ul.task-list li input[type="checkbox"] {
 <link href="cv_files/libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="cv_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="cv_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="cv_files/libs/bootstrap/bootstrap-fe4c0fef945aa34b7ed3f5d2a6ffe2fe.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="cv_files/libs/bootstrap/bootstrap-f5a40bb96669d15905143b6935689f8c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="clean.css">
 </head>
 
 <body>
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Sections</h2>
+    <h2 id="toc-title">CV Sections</h2>
    
   <ul>
   <li><a href="#research-impact" id="toc-research-impact" class="nav-link active" data-scroll-target="#research-impact">Research Impact</a></li>
@@ -78,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
-<main class="content" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -88,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-right">
 
     
   
@@ -475,6 +474,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
