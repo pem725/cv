@@ -28,11 +28,24 @@ jupyter: python3
 ```{python}
 #| label: setup
 import yaml
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 from datetime import datetime
 from IPython.display import HTML, Markdown
 
 with open('publications.yaml', 'r') as f:
     data = yaml.safe_load(f)
+
+# Color palette
+colors = {
+    'primary': '#18bc9c',
+    'secondary': '#3498db',
+    'accent': '#e74c3c',
+    'purple': '#9b59b6',
+    'orange': '#f39c12',
+    'gray': '#95a5a6'
+}
 ```
 
 ::: {.contact-info}
@@ -61,6 +74,137 @@ print(f"""
 """)
 ```
 
+### Research Contributions by Area
+
+```{python}
+#| label: research-areas
+# Categorize publications by research area
+articles = data['publications']['articles']
+categories = {}
+for art in articles:
+    cat = art.get('category', 'other')
+    if cat not in categories:
+        categories[cat] = {'count': 0, 'citations': 0}
+    categories[cat]['count'] += 1
+    categories[cat]['citations'] += art.get('citations', 0)
+
+# Create dataframe
+cat_df = pd.DataFrame([
+    {'Area': k.replace('_', ' ').title(), 'Publications': v['count'], 'Citations': v['citations']}
+    for k, v in categories.items()
+]).sort_values('Citations', ascending=False)
+
+fig = go.Figure(data=[go.Pie(
+    labels=cat_df['Area'],
+    values=cat_df['Citations'],
+    hole=0.4,
+    marker_colors=[colors['primary'], colors['secondary'], colors['accent'],
+                   colors['purple'], colors['orange'], colors['gray']][:len(cat_df)],
+    textposition='outside',
+    textinfo='label+percent',
+    hovertemplate='<b>%{label}</b><br>Citations: %{value:,}<br>%{percent}<extra></extra>'
+)])
+
+fig.update_layout(
+    title='Where My Work Gets Cited',
+    showlegend=False,
+    height=400,
+    margin=dict(t=60, b=20, l=20, r=20),
+    annotations=[dict(text=f'{metrics["total_citations"]:,}<br>Citations',
+                      x=0.5, y=0.5, font_size=16, showarrow=False)]
+)
+fig.show()
+```
+
+### Publication Timeline
+
+```{python}
+#| label: pub-timeline
+# Publications by year
+pubs = articles + data['publications']['books']
+years_data = {}
+for p in pubs:
+    yr = p['year']
+    if yr not in years_data:
+        years_data[yr] = {'count': 0, 'citations': 0}
+    years_data[yr]['count'] += 1
+    years_data[yr]['citations'] += p.get('citations', 0)
+
+timeline_df = pd.DataFrame([
+    {'Year': yr, 'Publications': v['count'], 'Citations': v['citations']}
+    for yr, v in sorted(years_data.items())
+])
+
+fig = go.Figure()
+
+fig.add_trace(go.Bar(
+    x=timeline_df['Year'],
+    y=timeline_df['Publications'],
+    name='Publications',
+    marker_color=colors['primary'],
+    hovertemplate='%{x}: %{y} publications<extra></extra>'
+))
+
+fig.add_trace(go.Scatter(
+    x=timeline_df['Year'],
+    y=timeline_df['Citations'],
+    name='Citations',
+    yaxis='y2',
+    mode='lines+markers',
+    line=dict(color=colors['accent'], width=2),
+    marker=dict(size=6),
+    hovertemplate='%{x}: %{y:,} citations<extra></extra>'
+))
+
+fig.update_layout(
+    title='Publications & Citations Over Time',
+    xaxis_title='Year',
+    yaxis=dict(title='Publications', side='left', showgrid=False),
+    yaxis2=dict(title='Citations', side='right', overlaying='y', showgrid=False),
+    height=350,
+    margin=dict(t=60, b=40, l=50, r=50),
+    legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5),
+    hovermode='x unified'
+)
+fig.show()
+```
+
+### Most Cited Works
+
+```{python}
+#| label: top-cited
+# Top cited publications
+all_pubs = articles + data['publications']['books']
+top_cited = sorted([p for p in all_pubs if p.get('citations', 0) > 0],
+                   key=lambda x: x.get('citations', 0), reverse=True)[:10]
+
+top_df = pd.DataFrame([{
+    'Title': p['title'][:50] + '...' if len(p['title']) > 50 else p['title'],
+    'Year': p['year'],
+    'Citations': p.get('citations', 0),
+    'Type': 'Book' if 'publisher' in p else 'Article'
+} for p in top_cited])
+
+fig = go.Figure(go.Bar(
+    x=top_df['Citations'],
+    y=top_df['Title'],
+    orientation='h',
+    marker_color=[colors['orange'] if t == 'Book' else colors['secondary'] for t in top_df['Type']],
+    text=top_df['Citations'],
+    textposition='outside',
+    hovertemplate='<b>%{y}</b><br>Citations: %{x:,}<extra></extra>'
+))
+
+fig.update_layout(
+    title='Top 10 Most Cited Works',
+    xaxis_title='Citations',
+    yaxis=dict(autorange='reversed'),
+    height=400,
+    margin=dict(t=60, b=40, l=250, r=60),
+)
+fig.show()
+```
+
 **Research Areas:** Quantitative Methods, Missing Data, Measurement, Purpose in Life, Curiosity, Health Psychology
 
 ---
@@ -79,8 +223,42 @@ for edu in data['education']:
 ## Academic Positions
 
 ```{python}
-#| output: asis
+#| label: career-timeline
 positions = data['positions'].get('current', []) + data['positions'].get('previous', [])
+
+fig = go.Figure()
+
+for i, pos in enumerate(positions):
+    start = pos['start']
+    end = pos.get('end', 2026) if not pos.get('current') else 2026
+    is_current = pos.get('current', False)
+
+    fig.add_trace(go.Bar(
+        x=[end - start],
+        y=[pos['institution']],
+        base=[start],
+        orientation='h',
+        marker_color=colors['primary'] if is_current else colors['gray'],
+        text=pos['title'],
+        textposition='inside',
+        insidetextanchor='middle',
+        hovertemplate=f"<b>{pos['title']}</b><br>{pos['institution']}<br>{start}–{'Present' if is_current else end}<extra></extra>",
+        showlegend=False
+    ))
+
+fig.update_layout(
+    title='Career Timeline',
+    xaxis=dict(title='Year', range=[1996, 2027]),
+    yaxis=dict(title=''),
+    height=250,
+    margin=dict(t=60, b=40, l=200, r=20),
+    barmode='overlay'
+)
+fig.show()
+```
+
+```{python}
+#| output: asis
 for pos in positions:
     end = "Present" if pos.get('current') else pos.get('end', '')
     featured = " ⭐" if pos.get('featured') else ""
@@ -134,10 +312,43 @@ print(f"\n[View all {len(articles)} publications on Google Scholar →](https://
 ## Research Funding
 
 ```{python}
-#| output: asis
+#| label: funding-chart
 grants = data['grants'].get('funded', [])
+grants_with_amount = [g for g in grants if g.get('amount')]
 total = sum(g.get('amount', 0) for g in grants)
 
+if grants_with_amount:
+    grant_df = pd.DataFrame([{
+        'Title': g['title'][:35] + '...' if len(g['title']) > 35 else g['title'],
+        'Amount': g['amount'],
+        'Funder': g['funder'],
+        'Role': g['role'],
+        'Years': f"{g['start']}-{g['end']}"
+    } for g in grants_with_amount]).sort_values('Amount', ascending=True)
+
+    fig = go.Figure(go.Bar(
+        x=grant_df['Amount'],
+        y=grant_df['Title'],
+        orientation='h',
+        marker_color=[colors['primary'] if 'Principal' in r else colors['secondary']
+                      for r in grant_df['Role']],
+        text=[f"${a/1e6:.1f}M" if a >= 1e6 else f"${a/1e3:.0f}K" for a in grant_df['Amount']],
+        textposition='outside',
+        hovertemplate='<b>%{y}</b><br>%{customdata[0]}<br>$%{x:,.0f}<br>%{customdata[1]}<extra></extra>',
+        customdata=list(zip(grant_df['Funder'], grant_df['Years']))
+    ))
+
+    fig.update_layout(
+        title=f'Research Funding (Total: ${total/1e6:.1f}M)',
+        xaxis_title='Amount ($)',
+        height=300,
+        margin=dict(t=60, b=40, l=250, r=80),
+    )
+    fig.show()
+```
+
+```{python}
+#| output: asis
 print(f"**Total Research Funding:** ${total:,.0f}\n")
 
 for grant in grants:
