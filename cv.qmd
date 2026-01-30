@@ -457,5 +457,6 @@ if data.get('erdos_number'):
 ::: {.footer}
 *Last updated: `{python} datetime.now().strftime('%B %d, %Y')`* |
 [Download PDF](McKnight_CV.pdf) |
+[NIH Biosketch](McKnight_NIH_Biosketch.pdf) |
 [GitHub](https://github.com/pem725/cv)
 :::
