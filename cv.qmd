@@ -74,6 +74,7 @@ print(f"""
 """)
 ```
 
+::: {.content-visible when-format="html"}
 ### Research Contributions by Area
 
 ```{python}
@@ -204,6 +205,7 @@ fig.update_layout(
 )
 fig.show()
 ```
+:::
 
 **Research Areas:** Quantitative Methods, Missing Data, Measurement, Purpose in Life, Curiosity, Health Psychology
 
@@ -222,6 +224,7 @@ for edu in data['education']:
 
 ## Academic Positions
 
+::: {.content-visible when-format="html"}
 ```{python}
 #| label: career-timeline
 positions = data['positions'].get('current', []) + data['positions'].get('previous', [])
@@ -256,9 +259,11 @@ fig.update_layout(
 )
 fig.show()
 ```
+:::
 
 ```{python}
 #| output: asis
+positions = data['positions'].get('current', []) + data['positions'].get('previous', [])
 for pos in positions:
     end = "Present" if pos.get('current') else pos.get('end', '')
     featured = " ⭐" if pos.get('featured') else ""
@@ -311,6 +316,7 @@ print(f"\n[View all {len(articles)} publications on Google Scholar →](https://
 
 ## Research Funding
 
+::: {.content-visible when-format="html"}
 ```{python}
 #| label: funding-chart
 grants = data['grants'].get('funded', [])
@@ -346,9 +352,12 @@ if grants_with_amount:
     )
     fig.show()
 ```
+:::
 
 ```{python}
 #| output: asis
+grants = data['grants'].get('funded', [])
+total = sum(g.get('amount', 0) for g in grants)
 print(f"**Total Research Funding:** ${total:,.0f}\n")
 
 for grant in grants:
