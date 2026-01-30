@@ -1,29 +1,15 @@
 ---
-title: "NIH Biographical Sketch - Patrick E. McKnight"
+title: "BIOGRAPHICAL SKETCH"
+subtitle: "OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 01/31/2027)"
 format:
-  pdf:
-    documentclass: article
-    geometry:
-      - margin=1in
-      - top=0.75in
+  typst:
+    toc: false
+    margin:
+      x: 1in
+      y: 0.75in
+    mainfont: "Linux Libertine"
     fontsize: 11pt
-    colorlinks: false
-    keep-tex: false
-    include-in-header:
-      text: |
-        \usepackage{fancyhdr}
-        \usepackage{array}
-        \usepackage{booktabs}
-        \usepackage{longtable}
-        \usepackage{enumitem}
-        \setlist[enumerate]{nosep, left=0pt}
-        \setlist[itemize]{nosep, left=0pt}
-        \pagestyle{fancy}
-        \fancyhf{}
-        \renewcommand{\headrulewidth}{0pt}
-        \fancyfoot[R]{\small Page \thepage}
-        \setlength{\parskip}{0.5em}
-        \setlength{\parindent}{0em}
+    columns: 1
 execute:
   echo: false
   warning: false
@@ -39,45 +25,28 @@ with open('publications.yaml', 'r') as f:
     data = yaml.safe_load(f)
 ```
 
-\begin{center}
-\small OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 01/31/2027)
-\end{center}
+*Provide the following information for the Senior/key personnel and other significant contributors. Follow this format for each person.* **DO NOT EXCEED FIVE PAGES.**
 
-\begin{center}
-\Large \textbf{BIOGRAPHICAL SKETCH}
-\end{center}
+---
 
-\noindent Provide the following information for the Senior/key personnel and other significant contributors. Follow this format for each person. \textbf{DO NOT EXCEED FIVE PAGES.}
+**NAME:** McKnight, Patrick Everett
 
-\vspace{0.3cm}
+**eRA COMMONS USER NAME:** PMCKNIGHT
 
-\noindent \textbf{NAME:} McKnight, Patrick Everett
+**POSITION TITLE:** Associate Professor of Psychology
 
-\noindent \textbf{eRA COMMONS USER NAME:} pmcknight
+---
 
-\noindent \textbf{POSITION TITLE:} Associate Professor of Psychology
+**EDUCATION/TRAINING** *(Begin with baccalaureate or other initial professional education, such as nursing, include postdoctoral training and residency training if applicable.)*
 
-\vspace{0.3cm}
+| INSTITUTION AND LOCATION | DEGREE | Completion Date | FIELD OF STUDY |
+|--------------------------|--------|-----------------|----------------|
+| University of Notre Dame, Notre Dame, IN | B.S. | 05/1988 | Mechanical Engineering |
+| University of Arizona, Tucson, AZ | M.S. | 05/1992 | Exercise & Sport Sciences |
+| University of Arizona, Tucson, AZ | Ph.D. | 08/1997 | Clinical Psychology |
+| University of Washington Medical School, Seattle, WA | Internship | 06/1999 | Clinical Psychology |
 
-\noindent \textbf{EDUCATION/TRAINING} (\textit{Begin with baccalaureate or other initial professional education, such as nursing, include postdoctoral training and residency training if applicable.})
-
-\vspace{0.2cm}
-
-\begin{tabular}{|p{5.5cm}|c|c|p{3.8cm}|}
-\hline
-\textbf{INSTITUTION AND LOCATION} & \textbf{DEGREE} & \textbf{Completion Date MM/YYYY} & \textbf{FIELD OF STUDY} \\
-\hline
-University of Notre Dame, Notre Dame, IN & B.S. & 05/1988 & Mechanical Engineering \\
-\hline
-University of Arizona, Tucson, AZ & M.S. & 05/1992 & Exercise \& Sport Sciences \\
-\hline
-University of Arizona, Tucson, AZ & Ph.D. & 08/1997 & Clinical Psychology \\
-\hline
-University of Washington Medical School, Seattle, WA & Internship & 06/1999 & Clinical Psychology \\
-\hline
-\end{tabular}
-
-\vspace{0.5cm}
+---
 
 ## A. Personal Statement
 
@@ -93,53 +62,45 @@ My unique background combining engineering (B.S., Notre Dame), exercise science 
 
 **Positions and Employment**
 
-2008 – Present: Associate Professor, Department of Psychology, George Mason University, Fairfax, VA
-
-2006 – 2008: Assistant Professor, Department of Psychology, George Mason University, Fairfax, VA
-
-2002 – 2006: Research Assistant Professor, Department of Psychology, University of Arizona, Tucson, AZ
-
-1999 – 2001: Health Sciences Specialist, VA Puget Sound Health Care System (CESATE), Seattle, WA
-
-1998 – 1999: Psychology Intern, University of Washington Medical School, Seattle, WA
+- 2011 – Present: Associate Professor, Department of Psychology, George Mason University, Fairfax, VA
+- 2005 – 2011: Assistant Professor, Department of Psychology, George Mason University, Fairfax, VA
+- 2002 – 2005: Research Assistant Professor, Department of Psychology, University of Arizona, Tucson, AZ
+- 1999 – 2001: Health Sciences Specialist, VA Puget Sound Health Care System (CESATE), Seattle, WA
+- 1998 – 1999: Psychology Intern, University of Washington Medical School, Seattle, WA
 
 **Other Experience and Professional Memberships**
 
-2001 – 2005: Chair, Quantitative Methods Topical Interest Group, American Evaluation Association
-
-1991 – Present: Member, American Evaluation Association
-
-1992 – Present: Member, American Psychological Association
-
-1992 – Present: Member, Association for Psychological Science
+- 2001 – 2005: Chair, Quantitative Methods Topical Interest Group, American Evaluation Association
+- 1991 – Present: Member, American Evaluation Association
+- 1992 – Present: Member, American Psychological Association
+- 1992 – Present: Member, Association for Psychological Science
 
 **Honors and Recognition**
 
-Founding Member, Measurement, Research methodology, Evaluation, and Statistics (MRES) group, GMU
-
-Member, Evaluation Group for the Analysis of Data (EGAD), University of Arizona
+- Founding Member, Measurement, Research methodology, Evaluation, and Statistics (MRES) group, GMU
+- Member, Evaluation Group for the Analysis of Data (EGAD), University of Arizona
 
 ## C. Contributions to Science
 
-1. **Missing Data Methodology.** I have made foundational contributions to the understanding and handling of missing data in psychological and health research. My book provides researchers with practical tools for preventing and addressing missing data through study design rather than solely relying on statistical remediation.
+**1. Missing Data Methodology.** I have made foundational contributions to the understanding and handling of missing data in psychological and health research. My book provides researchers with practical tools for preventing and addressing missing data through study design rather than solely relying on statistical remediation.
 
    a. McKnight, P.E., McKnight, K.M., Sidani, S., & Figueredo, A.J. (2007). *Missing Data: A Gentle Introduction*. Guilford Press. [3,200+ citations]
 
    b. Figueredo, A.J., McKnight, P.E., McKnight, K.M., & Sidani, S. (2000). Multivariate modeling of missing data within and across assessment waves. *Addiction*, 95(Suppl 3), 361-380. [450+ citations]
 
-2. **Measurement and Calibration.** My research on the calibration of psychological measures has influenced how researchers conceptualize the interpretability and meaningfulness of assessment scores. This work introduced calibration concepts to psychotherapy outcome research and provided methods for linking psychological constructs to real-world referents.
+**2. Measurement and Calibration.** My research on the calibration of psychological measures has influenced how researchers conceptualize the interpretability and meaningfulness of assessment scores. This work introduced calibration concepts to psychotherapy outcome research and provided methods for linking psychological constructs to real-world referents.
 
    a. Sechrest, L., McKnight, P., & McKnight, K. (1996). Calibration of measures for psychotherapy outcome studies. *American Psychologist*, 51(10), 1065-1071. [890+ citations]
 
-3. **Purpose in Life and Well-Being.** My collaborative research has advanced understanding of purpose in life as a protective factor against psychological distress. We demonstrated that commitment to meaningful goals serves as an antidote to suffering in social anxiety disorder and predicts positive outcomes independent of hedonic happiness.
+**3. Purpose in Life and Well-Being.** My collaborative research has advanced understanding of purpose in life as a protective factor against psychological distress. We demonstrated that commitment to meaningful goals serves as an antidote to suffering in social anxiety disorder and predicts positive outcomes independent of hedonic happiness.
 
-   a. McKnight, P.E., Kashdan, T.B., MacKay, A., Kelso, K., & Gross, M. (2025). Purpose and happiness: A comparison. *Journal of Positive Psychology*.
+   a. McKnight, P.E., Kashdan, T.B., MacKay, A., Kelso, K., & Gross, M. (2025). Purpose and happiness: A comparison. *Journal of Positive Psychology*. [in press]
 
    b. Kashdan, T.B., & McKnight, P.E. (2013). Commitment to a purpose in life: An antidote to the suffering by individuals with social anxiety disorder. *Emotion*, 13, 1150-1159. [380+ citations]
 
-4. **Curiosity Measurement and Workplace Applications.** I contributed to the development and validation of multidimensional curiosity measures, including the Five-Dimensional Curiosity Scale. This work has been applied to understanding curiosity in workplace settings across multiple countries.
+**4. Curiosity Measurement and Workplace Applications.** I contributed to the development and validation of multidimensional curiosity measures, including the Five-Dimensional Curiosity Scale. This work has been applied to understanding curiosity in workplace settings across multiple countries.
 
-   a. Kashdan, T.B., McKnight, P.E., et al. (2025). Enhancing curiosity with a wise intervention to improve political conversations. *Scientific Reports*.
+   a. Kashdan, T.B., McKnight, P.E., et al. (2025). Enhancing curiosity with a wise intervention to improve political conversations. *Scientific Reports*. [in press]
 
    b. Kashdan, T.B., Stiksma, M.C., Disabato, D., McKnight, P.E., et al. (2018). The five-dimensional curiosity scale. *Journal of Research in Personality*, 73, 130-149. [520+ citations]
 
@@ -150,21 +111,26 @@ Member, Evaluation Group for the Analysis of Data (EGAD), University of Arizona
 **Completed Research Support**
 
 **Koch Foundation** (PI: Kashdan) 2016-2021
-"Distinguishing extraordinarily happy from psychologically flexible people: A multi-method study of optimal human functioning"
+*"Distinguishing extraordinarily happy from psychologically flexible people: A multi-method study of optimal human functioning"*
 Role: Co-Investigator
 Goals: Evaluated whether psychological flexibility offers incremental value in understanding optimal functioning using multi-method longitudinal approaches.
 
 **NIH R01** (Multi-PI) 2016-2021
-"Prospective determination of neurobehavioral risk for the development of emotion disorders"
+*"Prospective determination of neurobehavioral risk for the development of emotion disorders"*
 Role: Co-Investigator
 Goals: Explored neural substrates of neurotic-anxious disposition and relation to clinically significant anxiety and depression.
 
-**NIAMS** 2003-2007 | Total: $2,630,000
-"Multidimensional Intervention in Osteoarthritis"
-Role: Co-Investigator (0.15 FTE)
-Goals: Tested long-term multidimensional intervention incorporating exercise and self-management in early knee osteoarthritis.
+**ONR** (PI: McKnight) 2014-2016 | Total: $899,577
+*"Evaluation and Review of ONR Immersive Training Environments"*
+Role: Principal Investigator
+Goals: Evaluated effectiveness of immersive virtual reality training environments for Navy personnel.
 
-**Arthritis Foundation Clinical Science Grant** 2002-2006 | Total: $313,500
-"Positive Mental Health and Outcomes in Osteoarthritis"
-Role: Co-Investigator (0.08 FTE)
-Goals: Prospectively studied predictive role of personality and affect on pain, function, and quality of life in osteoarthritis.
+**VA HSR&D** 2006-2010 | Total: $550,080
+*"Advancing Outcomes Measurement and Micro-costing in Blind Rehabilitation"*
+Role: Co-Investigator
+Goals: Developed outcome measures and cost-effectiveness analyses for VA blind rehabilitation programs.
+
+**NIH-NIMH** 2004-2009 | Total: $1,869,813
+*"Trait and State Frontal Brain Asymmetry in Depression"*
+Role: Co-Investigator
+Goals: Examined neural correlates of depression and emotional processing using EEG methods.

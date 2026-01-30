@@ -30,24 +30,25 @@ jobs:
     - name: Setup Quarto
       uses: quarto-dev/quarto-actions/setup@v2
 
-    - name: Install TinyTeX
+    - name: Install Typst
       run: |
-        quarto install tinytex
+        curl -fsSL https://typst.community/typst-install/install.sh | sh
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     - name: Render CV (HTML)
       run: |
         quarto render cv.qmd --to html
         mv cv.html index.html
 
-    - name: Render CV (PDF)
+    - name: Render CV (PDF via Typst)
       run: |
-        quarto render cv.qmd --to pdf
+        quarto render cv.qmd --to typst
         mv cv.pdf "McKnight_CV_$(date +%Y-%m-%d).pdf"
         cp "McKnight_CV_$(date +%Y-%m-%d).pdf" McKnight_CV.pdf
 
-    - name: Render NIH Biosketch
+    - name: Render NIH Biosketch (PDF via Typst)
       run: |
-        quarto render nih-biosketch.qmd --to pdf
+        quarto render nih-biosketch.qmd --to typst
         mv nih-biosketch.pdf "McKnight_NIH_Biosketch_$(date +%Y-%m-%d).pdf"
         cp "McKnight_NIH_Biosketch_$(date +%Y-%m-%d).pdf" McKnight_NIH_Biosketch.pdf
 
