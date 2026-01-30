@@ -103,7 +103,7 @@ print(f"""
 <div class="metric-label">i10-index</div>
 </div>
 <div class="metric-card">
-<div class="metric-value">130+</div>
+<div class="metric-value">{metrics['publications_count']}+</div>
 <div class="metric-label">Publications</div>
 </div>
 </div>
@@ -147,6 +147,8 @@ fig.show()
 
 # Create publication counts by year
 pubs = data['publications']['articles'] + data['publications']['books']
+if 'chapters' in data['publications']:
+    pubs += data['publications']['chapters']
 years = [p['year'] for p in pubs]
 year_counts = pd.Series(years).value_counts().sort_index()
 
@@ -199,7 +201,8 @@ print('</div>')
 ```{python}
 #| label: positions-timeline
 
-positions = data['positions']
+# Flatten positions from nested structure
+positions = data['positions'].get('current', []) + data['positions'].get('previous', [])
 
 # Create timeline visualization
 fig = go.Figure()
@@ -238,7 +241,8 @@ fig.show()
 #| output: asis
 
 print('<div class="positions-list">')
-for pos in data['positions']:
+positions = data['positions'].get('current', []) + data['positions'].get('previous', [])
+for pos in positions:
     end_str = "Present" if pos.get('current') else str(pos.get('end', ''))
     print(f"""
 <div class="position-item {'current' if pos.get('current') else ''}">
@@ -302,7 +306,9 @@ for article in articles[:15]:  # Show top 15
 ```{python}
 #| label: grants-chart
 
-grants = [g for g in data['grants'] if g.get('amount')]
+# Flatten grants from nested structure
+all_grants = data['grants'].get('funded', [])
+grants = [g for g in all_grants if g.get('amount')]
 df = pd.DataFrame(grants)
 
 fig = go.Figure(data=[go.Bar(
@@ -329,7 +335,8 @@ fig.show()
 #| output: asis
 
 print('<div class="grants-list">')
-for grant in data['grants']:
+all_grants = data['grants'].get('funded', [])
+for grant in all_grants:
     status_class = 'active' if grant['status'] == 'active' else 'completed'
     amount_str = f" | ${grant['amount']:,}" if grant.get('amount') else ""
     print(f"""
@@ -388,6 +395,100 @@ for s in skills['programming']:
     print(f'<span class="skill-tag">{s}</span>')
 print('</div></div>')
 print('</div>')
+```
+
+## Doctoral Students Mentored {#students}
+
+```{python}
+#| label: students
+#| output: asis
+
+graduated = data.get('students_graduated', [])
+current = data.get('students_current', [])
+
+if current:
+    print(f'<h3>Current Students ({len(current)})</h3>')
+    print('<div class="students-grid">')
+    for student in current:
+        print(f'<div class="student-card current"><strong>{student["name"]}</strong><br>{student.get("institution", "")}</div>')
+    print('</div>')
+
+if graduated:
+    print(f'<h3>Graduated ({len(graduated)})</h3>')
+    print('<div class="students-grid">')
+    for student in sorted(graduated, key=lambda x: x['year'], reverse=True):
+        print(f'<div class="student-card"><strong>{student["name"]}</strong><br>{student["institution"]}, {student["year"]}</div>')
+    print('</div>')
+```
+
+## Beyond Academia {#personal}
+
+```{python}
+#| label: personal-achievements
+#| output: asis
+
+if 'personal' in data:
+    personal = data['personal']
+
+    print('<div class="personal-grid">')
+
+    # Open Water Swimming
+    if 'athletics' in personal and 'open_water_swimming' in personal['athletics']:
+        swimming = personal['athletics']['open_water_swimming']
+        print('<div class="personal-section">')
+        print('<h3>🏊 Marathon Swimming</h3>')
+        print('<ul>')
+        for item in swimming:
+            if 'event' in item:
+                print(f'<li><strong>{item["event"]}</strong> ({item.get("date", "")})</li>')
+            elif 'achievement' in item:
+                print(f'<li>{item["achievement"]}</li>')
+        print('</ul>')
+        print('</div>')
+
+    # Mountaineering
+    if 'athletics' in personal and 'mountaineering' in personal['athletics']:
+        mountains = personal['athletics']['mountaineering']
+        print('<div class="personal-section">')
+        print('<h3>🏔️ Mountaineering</h3>')
+        print('<ul>')
+        for item in mountains:
+            if 'summit' in item:
+                print(f'<li><strong>{item["summit"]}</strong> ({item.get("year", "")}) — {item.get("type", "")}</li>')
+            elif 'achievement' in item:
+                print(f'<li>{item["achievement"]}</li>')
+        print('</ul>')
+        print('</div>')
+
+    # Triathlon
+    if 'athletics' in personal and 'triathlon' in personal['athletics']:
+        tri = personal['athletics']['triathlon']
+        print('<div class="personal-section">')
+        print('<h3>🏃 Triathlon</h3>')
+        print('<ul>')
+        for item in tri:
+            if 'event' in item:
+                print(f'<li><strong>{item["event"]}</strong> — {item.get("time", "")} (Top {item.get("placement", "")})</li>')
+        print('</ul>')
+        print('</div>')
+
+    # Sailing
+    if 'athletics' in personal and 'sailing' in personal['athletics']:
+        sailing = personal['athletics']['sailing']
+        print('<div class="personal-section">')
+        print('<h3>⛵ Sailing</h3>')
+        print('<ul>')
+        for item in sailing:
+            if 'achievement' in item:
+                print(f'<li>{item["achievement"]}</li>')
+        print('</ul>')
+        print('</div>')
+
+    print('</div>')
+
+    # Erdős number
+    if data.get('erdos_number'):
+        print(f'<p class="erdos">Erdős Number: <strong>{data["erdos_number"]}</strong></p>')
 ```
 
 ---
