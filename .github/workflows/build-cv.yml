@@ -29,8 +29,7 @@ jobs:
         python-version: '3.11'
 
     - name: Install Python dependencies
-      run: |
-        pip install -r requirements.txt
+      run: pip install -r requirements.txt
 
     - name: Setup Quarto
       uses: quarto-dev/quarto-actions/setup@v2
@@ -43,19 +42,17 @@ jobs:
     - name: Render CV (HTML)
       run: |
         quarto render cv.qmd --to html
-        mv cv.html index.html
+        cp cv.html index.html
 
     - name: Render CV (PDF via Typst)
       run: |
         quarto render cv.qmd --to typst
-        mv cv.pdf "McKnight_CV_$(date +%Y-%m-%d).pdf"
-        cp "McKnight_CV_$(date +%Y-%m-%d).pdf" McKnight_CV.pdf
+        cp cv.pdf McKnight_CV.pdf
 
     - name: Render NIH Biosketch (PDF via Typst)
       run: |
         quarto render nih-biosketch.qmd --to typst
-        mv nih-biosketch.pdf "McKnight_NIH_Biosketch_$(date +%Y-%m-%d).pdf"
-        cp "McKnight_NIH_Biosketch_$(date +%Y-%m-%d).pdf" McKnight_NIH_Biosketch.pdf
+        cp nih-biosketch.pdf McKnight_NIH_Biosketch.pdf
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
@@ -64,8 +61,16 @@ jobs:
         path: |
           *.pdf
           index.html
-          custom.scss
-          *_files/
+          clean.css
+
+    - name: Commit updated files to main
+      if: github.event_name != 'pull_request'
+      run: |
+        git config user.email "action@github.com"
+        git config user.name "GitHub Action"
+        git add index.html McKnight_CV.pdf McKnight_NIH_Biosketch.pdf cv.pdf nih-biosketch.pdf
+        git diff --staged --quiet || git commit -m "Auto-update outputs $(date +%Y-%m-%d)"
+        git push
 
     - name: Deploy to GitHub Pages
       if: github.event_name != 'pull_request'
@@ -73,13 +78,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: .
-        keep_files: true
-
-    - name: Commit PDFs
-      if: github.event_name != 'pull_request'
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add *.pdf
-        git diff --staged --quiet || git commit -m "Auto-update PDFs $(date +%Y-%m-%d)"
-        git push
+        exclude_assets: '.github,*.qmd,*.yaml,*.typ,requirements.txt,.venv,*.pyc,__pycache__'
