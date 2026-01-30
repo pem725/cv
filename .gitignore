@@ -1,0 +1,32 @@
+# Virtual environment
+.venv/
+venv/
+
+# Quarto
+.quarto/
+*_files/
+*_cache/
+
+# R
+.Rhistory
+.Rdata
+.RData
+.Ruserdata
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/

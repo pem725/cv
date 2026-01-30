@@ -1,0 +1,486 @@
+---
+title: "Patrick E. McKnight, Ph.D."
+format:
+  html:
+    theme:
+      light: [flatly, custom.scss]
+    toc: true
+    toc-location: left
+    toc-title: "Navigation"
+    page-layout: full
+    smooth-scroll: true
+    code-fold: true
+    code-summary: "Show code"
+  typst:
+    toc: true
+    margin:
+      x: 0.75in
+      y: 0.75in
+    mainfont: "Linux Libertine"
+    fontsize: 11pt
+execute:
+  echo: false
+  warning: false
+jupyter: python3
+---
+
+```{python}
+#| label: setup
+import yaml
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+from datetime import datetime
+from IPython.display import HTML, Markdown, display
+
+# Load data
+with open('publications.yaml', 'r') as f:
+    data = yaml.safe_load(f)
+
+# Helper functions
+def format_citation(pub):
+    """Format a publication entry as a citation string."""
+    citation = f"{pub['authors']} ({pub['year']}). {pub['title']}. "
+    if 'journal' in pub:
+        citation += f"*{pub['journal']}*"
+        if 'volume' in pub:
+            citation += f", {pub['volume']}"
+        if 'pages' in pub:
+            citation += f", {pub['pages']}"
+        citation += "."
+    elif 'publisher' in pub:
+        citation += f"{pub.get('location', '')}: {pub['publisher']}."
+    return citation
+```
+
+::: {.column-page}
+
+<div class="hero-section">
+<h1 class="hero-title">Patrick E. McKnight, Ph.D.</h1>
+<p class="hero-subtitle">Associate Professor of Psychology | George Mason University</p>
+<div class="hero-links">
+<a href="mailto:pmcknigh@gmu.edu" class="hero-link">📧 Email</a>
+<a href="https://psychology.gmu.edu/people/pmcknigh" class="hero-link">🏛️ GMU</a>
+<a href="https://scholar.google.com/citations?user=sH44LC4AAAAJ" class="hero-link">📚 Scholar</a>
+<a href="https://orcid.org/0000-0002-9067-9066" class="hero-link">🔗 ORCID</a>
+</div>
+</div>
+
+:::
+
+## Research Impact {#metrics}
+
+```{python}
+#| label: metrics-cards
+#| output: asis
+
+metrics = data['metrics']
+print(f"""
+<div class="metrics-grid">
+<div class="metric-card">
+<div class="metric-value">{metrics['total_citations']:,}</div>
+<div class="metric-label">Total Citations</div>
+</div>
+<div class="metric-card">
+<div class="metric-value">{metrics['h_index']}</div>
+<div class="metric-label">h-index</div>
+</div>
+<div class="metric-card">
+<div class="metric-value">{metrics['i10_index']}</div>
+<div class="metric-label">i10-index</div>
+</div>
+<div class="metric-card">
+<div class="metric-value">{metrics['publications_count']}+</div>
+<div class="metric-label">Publications</div>
+</div>
+</div>
+<p class="metrics-updated">Last updated: {metrics['last_updated']} from <a href="https://scholar.google.com/citations?user={data['scholar_id']}">Google Scholar</a></p>
+""")
+```
+
+### Research Focus Areas
+
+```{python}
+#| label: research-areas-chart
+
+areas = data['research_areas']
+df = pd.DataFrame(areas)
+
+fig = go.Figure(data=[go.Pie(
+    labels=df['name'],
+    values=df['weight'],
+    hole=0.4,
+    marker_colors=df['color'],
+    textposition='outside',
+    textinfo='label+percent',
+    pull=[0.05 if i == 0 else 0 for i in range(len(df))]
+)])
+
+fig.update_layout(
+    showlegend=False,
+    margin=dict(t=20, b=20, l=20, r=20),
+    height=350,
+    font=dict(size=12),
+    annotations=[dict(text='Research<br>Focus', x=0.5, y=0.5, font_size=14, showarrow=False)]
+)
+
+fig.show()
+```
+
+### Publication Timeline
+
+```{python}
+#| label: publications-timeline
+
+# Create publication counts by year
+pubs = data['publications']['articles'] + data['publications']['books']
+if 'chapters' in data['publications']:
+    pubs += data['publications']['chapters']
+years = [p['year'] for p in pubs]
+year_counts = pd.Series(years).value_counts().sort_index()
+
+# Fill in missing years
+all_years = range(min(years), max(years) + 1)
+year_counts = year_counts.reindex(all_years, fill_value=0)
+
+fig = go.Figure()
+
+fig.add_trace(go.Bar(
+    x=list(year_counts.index),
+    y=year_counts.values,
+    marker_color='#4f46e5',
+    hovertemplate='%{x}: %{y} publications<extra></extra>'
+))
+
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Publications",
+    height=300,
+    margin=dict(t=20, b=40, l=50, r=20),
+    plot_bgcolor='white',
+    xaxis=dict(tickmode='linear', dtick=5),
+    bargap=0.3
+)
+
+fig.show()
+```
+
+## Education {#education}
+
+```{python}
+#| label: education-table
+#| output: asis
+
+print('<div class="education-list">')
+for edu in data['education']:
+    print(f"""
+<div class="education-item">
+<div class="edu-degree">{edu['degree']} in {edu['field']}</div>
+<div class="edu-institution">{edu['institution']}, {edu['year']}</div>
+{'<div class="edu-details">' + edu['details'] + '</div>' if 'details' in edu else ''}
+</div>
+""")
+print('</div>')
+```
+
+## Academic Positions {#positions}
+
+```{python}
+#| label: positions-timeline
+
+# Flatten positions from nested structure
+positions = data['positions'].get('current', []) + data['positions'].get('previous', [])
+
+# Create timeline visualization
+fig = go.Figure()
+
+for i, pos in enumerate(positions):
+    start = pos['start']
+    end = pos.get('end', 2026) if not pos.get('current') else 2026
+
+    fig.add_trace(go.Bar(
+        x=[end - start],
+        y=[pos['institution']],
+        base=[start],
+        orientation='h',
+        marker_color='#4f46e5' if pos.get('current') else '#94a3b8',
+        text=pos['title'],
+        textposition='inside',
+        insidetextanchor='middle',
+        hovertemplate=f"<b>{pos['title']}</b><br>{pos['institution']}<br>{start} - {'Present' if pos.get('current') else end}<extra></extra>"
+    ))
+
+fig.update_layout(
+    showlegend=False,
+    height=250,
+    margin=dict(t=20, b=40, l=20, r=20),
+    xaxis=dict(title="Year", range=[1995, 2027]),
+    yaxis=dict(title=""),
+    barmode='overlay',
+    plot_bgcolor='white'
+)
+
+fig.show()
+```
+
+```{python}
+#| label: positions-list
+#| output: asis
+
+print('<div class="positions-list">')
+positions = data['positions'].get('current', []) + data['positions'].get('previous', [])
+for pos in positions:
+    end_str = "Present" if pos.get('current') else str(pos.get('end', ''))
+    print(f"""
+<div class="position-item {'current' if pos.get('current') else ''}">
+<div class="pos-title">{pos['title']}</div>
+<div class="pos-org">{pos['institution']} | {pos['department']}</div>
+<div class="pos-dates">{pos['start']} – {end_str}</div>
+</div>
+""")
+print('</div>')
+```
+
+## Selected Publications {#publications}
+
+### Books
+
+```{python}
+#| label: books
+#| output: asis
+
+for book in data['publications']['books']:
+    citation = format_citation(book)
+    print(f'<div class="publication-item book">')
+    print(f'<div class="pub-citation">{citation}</div>')
+    if 'citations' in book:
+        print(f'<span class="citation-badge">📖 {book["citations"]:,} citations</span>')
+    print('</div>')
+```
+
+### Peer-Reviewed Articles
+
+```{python}
+#| label: articles
+#| output: asis
+
+articles = sorted(data['publications']['articles'], key=lambda x: x['year'], reverse=True)
+
+for article in articles[:15]:  # Show top 15
+    citation = format_citation(article)
+    category = article.get('category', 'other')
+    category_colors = {
+        'curiosity': '#059669',
+        'purpose': '#0891b2',
+        'measurement': '#4f46e5',
+        'methodology': '#7c3aed',
+        'intervention': '#d97706'
+    }
+    color = category_colors.get(category, '#6b7280')
+
+    print(f'<div class="publication-item">')
+    print(f'<span class="category-tag" style="background-color: {color};">{category}</span>')
+    print(f'<div class="pub-citation">{citation}</div>')
+    if 'citations' in article:
+        print(f'<span class="citation-badge">📊 {article["citations"]:,} citations</span>')
+    print('</div>')
+```
+
+<p class="more-link"><a href="https://scholar.google.com/citations?user=sH44LC4AAAAJ">View all publications on Google Scholar →</a></p>
+
+## Research Funding {#grants}
+
+```{python}
+#| label: grants-chart
+
+# Flatten grants from nested structure
+all_grants = data['grants'].get('funded', [])
+grants = [g for g in all_grants if g.get('amount')]
+df = pd.DataFrame(grants)
+
+fig = go.Figure(data=[go.Bar(
+    x=df['title'].str[:40] + '...',
+    y=df['amount'],
+    marker_color=['#4f46e5', '#0891b2', '#059669', '#d97706'][:len(df)],
+    text=[f"${a/1e6:.1f}M" if a >= 1e6 else f"${a/1e3:.0f}K" for a in df['amount']],
+    textposition='outside'
+)])
+
+fig.update_layout(
+    yaxis_title="Funding ($)",
+    height=300,
+    margin=dict(t=40, b=100, l=60, r=20),
+    plot_bgcolor='white',
+    xaxis_tickangle=-30
+)
+
+fig.show()
+```
+
+```{python}
+#| label: grants-list
+#| output: asis
+
+print('<div class="grants-list">')
+all_grants = data['grants'].get('funded', [])
+for grant in all_grants:
+    status_class = 'active' if grant['status'] == 'active' else 'completed'
+    amount_str = f" | ${grant['amount']:,}" if grant.get('amount') else ""
+    print(f"""
+<div class="grant-item {status_class}">
+<div class="grant-title">{grant['title']}</div>
+<div class="grant-meta">{grant['funder']} | {grant['role']}{amount_str}</div>
+<div class="grant-dates">{grant['start']} – {grant['end']}</div>
+</div>
+""")
+print('</div>')
+```
+
+## Teaching {#teaching}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Graduate Courses
+```{python}
+#| output: asis
+for course in data['courses']['graduate']:
+    print(f"- **{course['code']}**: {course['title']}")
+```
+:::
+
+::: {.column width="50%"}
+### Undergraduate Courses
+```{python}
+#| output: asis
+for course in data['courses']['undergraduate']:
+    print(f"- **{course['code']}**: {course['title']}")
+```
+:::
+
+:::
+
+## Technical Skills {#skills}
+
+```{python}
+#| output: asis
+
+skills = data['skills']
+print('<div class="skills-grid">')
+print('<div class="skill-category"><h4>Statistical Software</h4><div class="skill-tags">')
+for s in skills['statistical']:
+    print(f'<span class="skill-tag">{s}</span>')
+print('</div></div>')
+
+print('<div class="skill-category"><h4>SEM & IRT</h4><div class="skill-tags">')
+for s in skills['sem'] + skills['irt']:
+    print(f'<span class="skill-tag">{s}</span>')
+print('</div></div>')
+
+print('<div class="skill-category"><h4>Programming</h4><div class="skill-tags">')
+for s in skills['programming']:
+    print(f'<span class="skill-tag">{s}</span>')
+print('</div></div>')
+print('</div>')
+```
+
+## Doctoral Students Mentored {#students}
+
+```{python}
+#| label: students
+#| output: asis
+
+graduated = data.get('students_graduated', [])
+current = data.get('students_current', [])
+
+if current:
+    print(f'<h3>Current Students ({len(current)})</h3>')
+    print('<div class="students-grid">')
+    for student in current:
+        print(f'<div class="student-card current"><strong>{student["name"]}</strong><br>{student.get("institution", "")}</div>')
+    print('</div>')
+
+if graduated:
+    print(f'<h3>Graduated ({len(graduated)})</h3>')
+    print('<div class="students-grid">')
+    for student in sorted(graduated, key=lambda x: x['year'], reverse=True):
+        print(f'<div class="student-card"><strong>{student["name"]}</strong><br>{student["institution"]}, {student["year"]}</div>')
+    print('</div>')
+```
+
+## Beyond Academia {#personal}
+
+```{python}
+#| label: personal-achievements
+#| output: asis
+
+if 'personal' in data:
+    personal = data['personal']
+
+    print('<div class="personal-grid">')
+
+    # Open Water Swimming
+    if 'athletics' in personal and 'open_water_swimming' in personal['athletics']:
+        swimming = personal['athletics']['open_water_swimming']
+        print('<div class="personal-section">')
+        print('<h3>🏊 Marathon Swimming</h3>')
+        print('<ul>')
+        for item in swimming:
+            if 'event' in item:
+                print(f'<li><strong>{item["event"]}</strong> ({item.get("date", "")})</li>')
+            elif 'achievement' in item:
+                print(f'<li>{item["achievement"]}</li>')
+        print('</ul>')
+        print('</div>')
+
+    # Mountaineering
+    if 'athletics' in personal and 'mountaineering' in personal['athletics']:
+        mountains = personal['athletics']['mountaineering']
+        print('<div class="personal-section">')
+        print('<h3>🏔️ Mountaineering</h3>')
+        print('<ul>')
+        for item in mountains:
+            if 'summit' in item:
+                print(f'<li><strong>{item["summit"]}</strong> ({item.get("year", "")}) — {item.get("type", "")}</li>')
+            elif 'achievement' in item:
+                print(f'<li>{item["achievement"]}</li>')
+        print('</ul>')
+        print('</div>')
+
+    # Triathlon
+    if 'athletics' in personal and 'triathlon' in personal['athletics']:
+        tri = personal['athletics']['triathlon']
+        print('<div class="personal-section">')
+        print('<h3>🏃 Triathlon</h3>')
+        print('<ul>')
+        for item in tri:
+            if 'event' in item:
+                print(f'<li><strong>{item["event"]}</strong> — {item.get("time", "")} (Top {item.get("placement", "")})</li>')
+        print('</ul>')
+        print('</div>')
+
+    # Sailing
+    if 'athletics' in personal and 'sailing' in personal['athletics']:
+        sailing = personal['athletics']['sailing']
+        print('<div class="personal-section">')
+        print('<h3>⛵ Sailing</h3>')
+        print('<ul>')
+        for item in sailing:
+            if 'achievement' in item:
+                print(f'<li>{item["achievement"]}</li>')
+        print('</ul>')
+        print('</div>')
+
+    print('</div>')
+
+    # Erdős number
+    if data.get('erdos_number'):
+        print(f'<p class="erdos">Erdős Number: <strong>{data["erdos_number"]}</strong></p>')
+```
+
+---
+
+<div class="footer-note">
+<p>This CV is automatically generated and maintained at <a href="https://github.com/pem725/cv">github.com/pem725/cv</a></p>
+<p>Generated: `{python} datetime.now().strftime('%B %d, %Y')`</p>
+</div>
