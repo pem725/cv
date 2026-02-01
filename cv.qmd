@@ -103,14 +103,32 @@ for book in data['publications']['books']:
 
 ---
 
-## Selected Publications
+## Book Chapters
+
+```{python}
+#| output: asis
+chapters = data['publications'].get('book_chapters', [])
+chapters = sorted(chapters, key=lambda x: x['year'], reverse=True)
+
+for ch in chapters:
+    editors = ch.get('editors', ch.get('editor', ''))
+    cite = f"{ch['authors']} ({ch['year']}). {ch['title']}. "
+    cite += f"In {editors} (Eds.), *{ch['book']}*. {ch['publisher']}."
+    cite_count = f" *[{ch['citations']} citations]*" if ch.get('citations') else ""
+    print(f"- {cite}{cite_count}\n")
+```
+
+---
+
+## Journal Articles
 
 ```{python}
 #| output: asis
 articles = sorted(data['publications']['articles'], key=lambda x: x['year'], reverse=True)
+print(f"*{len(articles)} peer-reviewed articles*\n")
 
 current_year = None
-for article in articles[:30]:
+for article in articles:
     if article['year'] != current_year:
         current_year = article['year']
         print(f"\n### {current_year}\n")
@@ -126,8 +144,6 @@ for article in articles[:30]:
 
     cite_count = f" *[{article['citations']} citations]*" if article.get('citations') else ""
     print(f"- {cite}{cite_count}\n")
-
-print(f"\n*See [Google Scholar](https://scholar.google.com/citations?user=sH44LC4AAAAJ) for complete publication list ({len(articles)} articles)*")
 ```
 
 ---
