@@ -31,6 +31,13 @@ jobs:
     - name: Install Python dependencies
       run: pip install -r requirements.txt
 
+    - name: Sync new journal articles from ORCID
+      # Additive and curation-safe: appends only genuine journal-articles that
+      # are on the ORCID public record but missing from publications.yaml, each
+      # flagged category:"TODO" for later categorization. A no-op when ORCID has
+      # nothing new; preprints/conference papers are reported, never auto-added.
+      run: python3 tools/sync_orcid.py --write
+
     - name: Setup Quarto
       uses: quarto-dev/quarto-actions/setup@v2
 
@@ -68,7 +75,7 @@ jobs:
       run: |
         git config user.email "action@github.com"
         git config user.name "GitHub Action"
-        git add index.html McKnight_CV.pdf McKnight_NIH_Biosketch.pdf cv.pdf nih-biosketch.pdf
+        git add index.html McKnight_CV.pdf McKnight_NIH_Biosketch.pdf cv.pdf nih-biosketch.pdf publications.yaml
         git diff --staged --quiet || git commit -m "Auto-update outputs $(date +%Y-%m-%d)"
         git push
 
