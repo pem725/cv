@@ -30,3 +30,6 @@ Thumbs.db
 *~
 .vscode/
 .idea/
+
+# ORCID sync backup (sync_orcid.py writes publications.yaml.bak)
+*.bak
