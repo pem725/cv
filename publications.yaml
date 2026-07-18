@@ -115,6 +115,31 @@ publications:
       category: "methodology"
 
   articles:
+    - authors: "Kashdan, T.B., Goodman, F.R., McKnight, P.E., Brown, B.A., & Rum, R."
+      year: 2025
+      title: "Purpose in life: A resolution on the definition, conceptual model, and optimal measurement"
+      journal: "American Psychologist"
+      status: "in press"
+      category: "purpose"
+    - authors: "Kaufman, J., Kashdan, T.B., & McKnight, P.E."
+      year: 2025
+      title: "Past glories feel good but creative minorities push us forward"
+      journal: "Behavioral and Brain Sciences"
+      status: "in press"
+      category: "cognition"
+    - authors: "Dang, J.A., Shaw, T.H., McKnight, P.E., & Helton, W.S."
+      year: 2022
+      title: "A closer look at warning cues on the sustained attention to response task performance"
+      journal: "Human Factors"
+      category: "cognition"
+    - authors: "Reed, R.L., Hepburn, K., Adelson, R., Center, B., & McKnight, P.E."
+      year: 1999
+      title: "Risk factors for development of stage 2 or greater pressure ulcers in hospitalized older adults"
+      journal: "Journal of the American Geriatrics Society"
+      volume: 47
+      issue: 9
+      pages: "S4"
+      category: "health"
     - authors: "Mougeot, J.L.C., Davis, J.M., Zhao, J., Sullivan, K.A., Thornhill, M.H., McKnight, P.E., Stephens, C., & Lockhart, P.B."
       year: 2020
       title: "Methodology for the development of a national Dental Practice-Based Research Network survey on dentist’s beliefs and behaviors concerning antibiotic prophylaxis"
@@ -1035,6 +1060,12 @@ publications:
       category: "intervention"
 
   book_chapters:
+    - authors: "Wilhelm, O., Witthöft, M., McKnight, P.E., & Grössler, A."
+      year: 1999
+      title: "On the psychometric quality of new ability tests administered using the WWW"
+      book: "Current Internet Science — Trends, Techniques, Results"
+      editors: "Reips, U.-D."
+      publisher: "Online Press, Zürich"
     - authors: "McKnight, P.E. & McKnight, K.M."
       year: 2013
       title: "Missing Data in Psychological Science"
@@ -1077,6 +1108,95 @@ publications:
       book: "Research Design: Donald Campbell's Legacy"
       editor: "Bickman, L."
       publisher: "Sage Publications"
+
+  conference_proceedings:
+    - authors: "Cam, K.M., McKnight, P.E., & Doctor, J.N."
+      year: 2002
+      title: "The Delphi method online: Medical expert consensus via the Internet"
+      venue: "Proceedings of the AMIA Symposium, 990"
+    - authors: "Coan, J.A., Allen, J.J.B., & McKnight, P.E."
+      year: 2002
+      title: "Generalizability of trait- and state-manipulated frontal EEG asymmetry"
+      venue: "Psychophysiology, 39(Suppl. 1), S26"
+    - authors: "Chen, M.K., & McKnight, P.E."
+      year: 2004
+      title: "Confirmatory factor analysis in measurement development: A model comparison between CFA and classical test theory"
+      venue: "International Journal of Psychology, 39(5–6, Suppl.), 66"
+    - authors: "McKnight, P.E., & Chen, M.K."
+      year: 2004
+      title: "Evaluating measurement models"
+      venue: "International Journal of Psychology, 39(5–6, Suppl.), 66"
+    - authors: "Fridel, K.W., Cousins, J.C., McKnight, P.E., & Bootzin, R.R."
+      year: 2004
+      title: "A multitrait-multimethod analysis of sleep log and actigraphy assessment in adolescents recovering from substance abuse"
+      venue: "Sleep, 27(Suppl.), 371–372"
+    - authors: "Algotar, A.M., Martinez, E.M., McKnight, P.E., Heigh, R.I., & Lance, P."
+      year: 2005
+      title: "Results of a survey to assess colorectal cancer screening capacity in Arizona"
+      venue: "American Journal of Epidemiology, 161(11, Suppl.), S131"
+    - authors: "Kasle, S., McKnight, P.E., Sheikh, S.Z., Swe, K., Lisse, J.R., Wilhelm, M.S., & Zautra, A.J."
+      year: 2008
+      title: "DMARD use, marital satisfaction, and inflammation in RA"
+      venue: "Arthritis and Rheumatism, 58(9, Suppl.), S871"
+    - authors: "Kasle, S., Sheikh, S.Z., McKnight, P.E., Swe, K., Lisse, J.R., Wilhelm, M.S., & Zautra, A.J."
+      year: 2008
+      title: "Mutuality protects against inflammation in rheumatoid arthritis patients"
+      venue: "Arthritis and Rheumatism, 58(9, Suppl.), S209"
+    - authors: "de Visser, E., Krueger, F., McKnight, P.E., Scheid, S., Smith, M., Chalk, S., & Parasuraman, R."
+      year: 2012
+      title: "The world is not enough: Trust in cognitive agents"
+      venue: "Human Factors and Ergonomics Society Annual Meeting Proceedings"
+    - authors: "Quartuccio, J., Franz, S., Gonzalez, C., Kenner, N., Cades, D.M., Sala, J.B., Arndt, S.R., & McKnight, P.E."
+      year: 2014
+      title: "Seeing is believing: The use of data visualization to identify trends for cycling safety"
+      venue: "Human Factors and Ergonomics Society Annual Meeting Proceedings"
+    - authors: "Saad, M.A., McKnight, P.E., Quartuccio, J., Nicholas, D., Jaladi, R., & Corriveau, P."
+      year: 2016
+      title: "Consumer-photo quality assessment: Challenges and pitfalls in crowdsourcing"
+      venue: "2016 Eighth International Conference on Quality of Multimedia Experience (QoMEX)"
+
+  # NOTE (2026-07-18 import): the submitted/in_preparation entries below come from the
+  # archival CV and are HISTORICAL — several date to the 2000s and never appeared.
+  # Review and prune before treating as current status.
+  submitted:
+    - authors: "Sechrest, L., McKnight, P.E., & Wood, J."
+      title: "The task of combining measures"
+      venue: "Assessment"
+    - authors: "McKnight, P.E., & Chen, M.K."
+      title: "A critical evaluation of CFA fit statistics"
+      venue: "Applied Psychological Measurement"
+    - authors: "McKnight, P.E., & Najab, J."
+      title: "When might multiple imperfect measures be preferable over the elusive perfect single measure?"
+      venue: "Applied Psychological Measurement"
+    - authors: "Sechrest, L., & McKnight, P.E."
+      title: "Research in naturalistic settings"
+      venue: "Annual Review of Psychology"
+    - authors: "McKnight, P.E., Thompson, P., Menke, J.M., Martinez, E., & Lance, P."
+      title: "Colorectal cancer screening: A Bayesian cost-effectiveness model update after a decade of scientific advances"
+      venue: "The Lancet"
+    - authors: "McKnight, P.E., Kashdan, T.B., Johnson, L., & Zautra, A.J."
+      title: "Predicting arthritis treatment outcomes within an approach-avoidance framework: A novel application of an established theory"
+      venue: "Psychological Science"
+
+  in_preparation:
+    - authors: "McKnight, P.E., McKnight, K.M., & Sidani, S."
+      title: "A three-year comprehensive review of missing data in published research"
+      venue: "Journal of Consulting and Clinical Psychology"
+    - authors: "McKnight, P.E., & Steuwig, J."
+      title: "Patterns in everyday data"
+      venue: "Psychological Methods"
+
+  software:
+    - name: "Social Science Measurement Project"
+      desc: "An open-source project for developing and freely distributing software to analyze social science measures"
+      url: "http://ssm.sf.net/"
+    - name: "Delphi Online Project"
+      desc: "An open-source project producing software to conduct online Delphi studies"
+      url: "http://delphionline.sf.net/"
+    - name: "Statistics Courseware"
+      desc: "An open-source educational package that randomly assigns datasets to students for exams and quizzes, administers quizzes online with timed access, and provides immediate feedback"
+    - name: "MRES R package"
+      desc: "An open-source R package of data-reduction routines commonly used in measurement research"
 
 # Grants
 grants:

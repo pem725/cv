@@ -155,6 +155,34 @@ for article in articles:
 
 ---
 
+## Conference Proceedings
+
+```{python}
+#| output: asis
+proceedings = sorted(data['publications'].get('conference_proceedings', []), key=lambda x: x['year'], reverse=True)
+for p in proceedings:
+    print(f"- {p['authors']} ({p['year']}). {p['title']}. *{p['venue']}*.\n")
+```
+
+---
+
+<!-- Manuscripts Under Review / In Preparation: intentionally NOT rendered (held 2026-07-18).
+     The submitted: and in_preparation: lists in publications.yaml come from the archival CV
+     and are historical/stale (some ~20 years old, never appeared). Prune/update those entries
+     in publications.yaml, then restore render sections here that loop over
+     data['publications']['submitted'] and data['publications']['in_preparation']. -->
+
+## Software
+
+```{python}
+#| output: asis
+for s in data['publications'].get('software', []):
+    url = f" <{s['url']}>" if s.get('url') else ""
+    print(f"- **{s['name']}** — {s['desc']}.{url}\n")
+```
+
+---
+
 ## Research Funding
 
 ```{python}
