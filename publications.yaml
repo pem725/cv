@@ -195,13 +195,6 @@ publications:
       citations: 13
       category: "health"  # verify (ORCID import)
 
-    - authors: "Crane, N.B., & McKnight, P."
-      year: 2012
-      title: "Impact of self-assembly process errors on thermoelectric performance"
-      journal: "Journal of Electronic Packaging, Transactions of the ASME"
-      doi: "10.1115/1.4006709"
-      category: "methodology"  # verify (ORCID import)
-
     - authors: "Kashdan, T.B., & McKnight, P.E."
       year: 2009
       title: "Origins of purpose in life: Refining our understanding of a life well lived"
