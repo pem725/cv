@@ -172,6 +172,19 @@ for p in proceedings:
      in publications.yaml, then restore render sections here that loop over
      data['publications']['submitted'] and data['publications']['in_preparation']. -->
 
+## Preprints & Working Papers
+
+```{python}
+#| output: asis
+for p in sorted(data['publications'].get('preprints', []), key=lambda x: x.get('year', 0), reverse=True):
+    auth = p['authors'].rstrip('.')
+    venue = f" *{p['venue']}*." if p.get('venue') else ""
+    link = f" [doi:{p['doi']}](https://doi.org/{p['doi']})" if p.get('doi') else ""
+    print(f"- {auth} ({p['year']}). {p['title']}.{venue}{link}\n")
+```
+
+---
+
 ## Software
 
 ```{python}

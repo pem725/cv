@@ -115,22 +115,21 @@ publications:
       category: "methodology"
 
   articles:
-    - authors: "Kashdan, T.B., Goodman, F.R., McKnight, P.E., Brown, B.A., & Rum, R."
-      year: 2025
-      title: "Purpose in life: A resolution on the definition, conceptual model, and optimal measurement"
-      journal: "American Psychologist"
-      status: "in press"
-      category: "purpose"
+    - authors: "Kashdan, T.B., & McKnight, P.E."
+      year: 2026
+      title: "Prejudice against jagged personality profiles: Rethinking bias in psychological research and clinical practice"
+      journal: "Current Opinion in Psychology"
+      volume: 70
+      pages: "102290"
+      doi: "10.1016/j.copsyc.2026.102290"
+      category: "measurement"
     - authors: "Kaufman, J., Kashdan, T.B., & McKnight, P.E."
-      year: 2025
+      year: 2024
       title: "Past glories feel good but creative minorities push us forward"
       journal: "Behavioral and Brain Sciences"
-      status: "in press"
-      category: "cognition"
-    - authors: "Dang, J.A., Shaw, T.H., McKnight, P.E., & Helton, W.S."
-      year: 2022
-      title: "A closer look at warning cues on the sustained attention to response task performance"
-      journal: "Human Factors"
+      volume: 47
+      pages: "e183"
+      doi: "10.1017/s0140525x24000773"
       category: "cognition"
     - authors: "Reed, R.L., Hepburn, K., Adelson, R., Center, B., & McKnight, P.E."
       year: 1999
@@ -222,9 +221,12 @@ publications:
       category: "curiosity"
 
     - authors: "McKnight, P.E., Kashdan, T.B., MacKay, A., Kelso, K., & Gross, M."
-      year: 2025
+      year: 2026
       title: "Purpose and happiness: A comparison"
       journal: "Journal of Positive Psychology"
+      volume: 21
+      issue: 4
+      pages: "658-669"
       doi: "10.1080/17439760.2025.2515942"
       citations: 1
       category: "purpose"
@@ -268,11 +270,14 @@ publications:
       category: "curiosity"
 
     # 2023
-    - authors: "Kashdan, T.B., Goodman, F.R., McKnight, P.E., Brown, B., & Rum, R."
-      year: 2023
+    - authors: "Kashdan, T.B., Goodman, F.R., McKnight, P.E., Brown, B.A., & Rum, R."
+      year: 2024
       title: "Purpose in life: A resolution on the definition, conceptual model, and optimal measurement"
-      doi: "10.1037/amp0001223"
       journal: "American Psychologist"
+      volume: 79
+      issue: 6
+      pages: "838-853"
+      doi: "10.1037/amp0001223"
       citations: 75
       category: "purpose"
 
@@ -1197,6 +1202,13 @@ publications:
       desc: "An open-source educational package that randomly assigns datasets to students for exams and quizzes, administers quizzes online with timed access, and provides immediate feedback"
     - name: "MRES R package"
       desc: "An open-source R package of data-reduction routines commonly used in measurement research"
+
+  preprints:
+    - authors: "Kashdan, T.B., McKnight, P.E., Gross, M., & Schooler, J.W."
+      year: 2026
+      title: "Happiness and Purpose in Life: Overlapping Self-Regulatory Traits in a Two-Year Longitudinal Study"
+      venue: "SSRN preprint"
+      doi: "10.2139/ssrn.6442491"
 
 # Grants
 grants:
