@@ -115,6 +115,12 @@ publications:
       category: "methodology"
 
   articles:
+    - authors: "Crane, N.B., & McKnight, P."
+      year: 2012
+      title: "Impact of self-assembly process errors on thermoelectric performance"
+      journal: "Journal of Electronic Packaging, Transactions of the ASME"
+      doi: "10.1115/1.4006709"
+      category: "TODO"  # <- ORCID import: set category
     - authors: "Kashdan, T.B., & McKnight, P.E."
       year: 2026
       title: "Prejudice against jagged personality profiles: Rethinking bias in psychological research and clinical practice"
