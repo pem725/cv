@@ -77,6 +77,11 @@ def emit(data, as_of):
             line += f" — as of {m['last_updated']}"
         w(line + "\n")
 
+    # Personal statement ------------------------------------------------------
+    if data.get("personal_statement"):
+        w("\n## Personal Statement\n")
+        w(data["personal_statement"].strip() + "\n")
+
     # Education ---------------------------------------------------------------
     w("\n## Education\n")
     for e in data.get("education", []):
@@ -290,8 +295,13 @@ def emit(data, as_of):
             lines = []
             for item in entries:
                 if item.get("event"):
-                    d = f" ({item['date']})" if item.get("date") else ""
+                    extra = item.get("date") or item.get("time") or ""
+                    place = f", {item['placement']}" if item.get("placement") else ""
+                    d = f" ({extra}{place})" if (extra or place) else ""
                     lines.append(f"{item['event']}{d}")
+                elif item.get("summit"):
+                    yr = f" ({item['year']})" if item.get("year") else ""
+                    lines.append(f"{item['summit']}{yr}")
                 elif item.get("achievement"):
                     lines.append(item["achievement"])
             if lines:

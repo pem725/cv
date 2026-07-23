@@ -8,6 +8,20 @@ orcid: "0000-0002-9067-9066"
 era_commons: "PMCKNIGHT"
 erdos_number: 6
 
+# Personal statement (rendered at the top of the CV)
+personal_statement: >-
+  I am a social scientist whose interests largely focus on human motivation and
+  performance. My purpose in life is to contribute to the scientific body of
+  knowledge by studying individuals in their natural performance environments
+  (a la Brunswikian representative design) and measuring them with the best
+  possible tools. That purpose guides me as a scientist, father, adventurer, and
+  citizen. I am an unabashed proponent of quantitative methods, both frequentist
+  and subjectivist, using the most sophisticated, open-source tools to achieve my
+  goals. My work to date and research interests are best explored on
+  [my Google Scholar](https://scholar.google.com/citations?hl=en&user=sH44LC4AAAAJ),
+  [personal](http://www.patrickemcknight.com/), and [MRES lab](http://mres-gmu.org)
+  web sites.
+
 # Contact
 contact:
   email: "pmcknigh@gmu.edu"

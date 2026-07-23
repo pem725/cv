@@ -67,6 +67,16 @@ colors = {
 
 ---
 
+## Personal Statement
+
+```{python}
+#| output: asis
+if data.get('personal_statement'):
+    print(data['personal_statement'])
+```
+
+---
+
 ## Education
 
 ```{python}
