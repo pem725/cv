@@ -17,11 +17,14 @@ contact:
 
 # Metrics (from Google Scholar)
 metrics:
-  total_citations: 16449
+  total_citations: 16616
   h_index: 52
   i10_index: 80
+  citations_since_2021: 8059
+  h_index_since_2021: 38
+  i10_index_since_2021: 66
   publications_count: 91
-  last_updated: "2026-06-11"
+  last_updated: "2026-07-23"
 
 # Education
 education:
@@ -1064,6 +1067,15 @@ publications:
       category: "intervention"
 
   book_chapters:
+    - authors: "Kashdan, T.B., McKnight, P.E., & Gross, M."
+      year: 2026
+      title: "The curiosity inefficiency model: An essential part of the creative person, process, and products"
+      book: "The Cambridge Handbook of Creativity and Wellbeing"
+      editors: "Holinger, M., Ruch, W., Tay, L., Özyaprak, M., & Kaufman, J.C."
+      publisher: "Cambridge University Press"
+      status: "in press"
+      note: "Invited chapter"
+
     - authors: "Wilhelm, O., Witthöft, M., McKnight, P.E., & Grössler, A."
       year: 1999
       title: "On the psychometric quality of new ability tests administered using the WWW"
@@ -1159,10 +1171,23 @@ publications:
       title: "Consumer-photo quality assessment: Challenges and pitfalls in crowdsourcing"
       venue: "2016 Eighth International Conference on Quality of Multimedia Experience (QoMEX)"
 
-  # NOTE (2026-07-18 import): the submitted/in_preparation entries below come from the
-  # archival CV and are HISTORICAL — several date to the 2000s and never appeared.
-  # Review and prune before treating as current status.
-  submitted:
+  # Manuscripts currently under review (rendered on the CV).
+  under_review:
+    - authors: "Gross, M.E., Kashdan, T.B., McKnight, P.E., & Schooler, J.W."
+      year: 2026
+      title: "Shaping personality with micro-interventions: Using curiosity as an example of state-to-trait personality change"
+      venue: "American Psychologist"
+      note: "2-year JIF = 16.4"
+    - authors: "Hershmati, R., Kashdan, T.B., McKnight, P.E., Farsani, M.A., & Esfandi, M.R."
+      year: 2026
+      title: "The nature of emotion regulation in Iran"
+      venue: "under review"
+
+  # NOTE (2026-07-18 import): the entries below come from the archival CV and are
+  # HISTORICAL — several date to the 2000s and never appeared. They are archived here
+  # under historical_* keys so nothing renders them on the current CV. Do not treat as
+  # current status.
+  historical_submitted:
     - authors: "Sechrest, L., McKnight, P.E., & Wood, J."
       title: "The task of combining measures"
       venue: "Assessment"
@@ -1182,7 +1207,7 @@ publications:
       title: "Predicting arthritis treatment outcomes within an approach-avoidance framework: A novel application of an established theory"
       venue: "Psychological Science"
 
-  in_preparation:
+  historical_in_preparation:
     - authors: "McKnight, P.E., McKnight, K.M., & Sidani, S."
       title: "A three-year comprehensive review of missing data in published research"
       venue: "Journal of Consulting and Clinical Psychology"
@@ -1191,6 +1216,10 @@ publications:
       venue: "Psychological Methods"
 
   software:
+    - name: "GradStats-Book"
+      desc: "A free, open, continuously maintained online graduate statistics textbook, with all code kept current against present software versions"
+      url: "https://pem725.github.io/GradStats-Book/"
+
     - name: "Social Science Measurement Project"
       desc: "An open-source project for developing and freely distributing software to analyze social science measures"
       url: "http://ssm.sf.net/"
@@ -1212,6 +1241,39 @@ publications:
 # Grants
 grants:
   funded:
+    - title: "A Smartphone-Based Program for Enhancing Curiosity and Its Associated Virtues"
+      funder: "John Templeton Foundation"
+      role: "Co-Investigator"
+      pi: "Todd Kashdan"
+      start: 2025
+      end: 2028
+      amount: 94854
+      status: "active"
+
+    - title: "An Internet of Things Automated Cognitive Behavioral Therapy for Insomnia that Improves Cognition in Older Adults"
+      funder: "NIH / National Institute on Aging (R43AG097205-01, SBIR Phase I; awarded to Proactive Life Inc. d/b/a SleepSpace)"
+      role: "Analytic Lead"
+      pi: "Daniel Gartenberg"
+      start: 2025
+      end: 2026
+      status: "active"
+
+    - title: "The Well-Being Laboratory"
+      funder: "Charles Koch Foundation"
+      role: "Co-Investigator"
+      pi: "Todd Kashdan"
+      start: 2023
+      end: 2026
+      status: "active"
+
+    - title: "Predicting Caries Lesion Patterns and Trajectories in Underserved Children, from Infancy to Early Adolescence, in Primary Healthcare Settings"
+      funder: "University of Michigan School of Dentistry (NIDCR-funded multi-site cohort; PAF 22-PAF07272)"
+      role: "Consultant"
+      pi: "Margherita Fontana"
+      start: 2021
+      end: "present"
+      status: "active"
+
     - title: "Crowdsourcing forecast models in intelligence"
       funder: "IARPA"
       role: "Co-Investigator"
@@ -1353,10 +1415,10 @@ courses:
       years: "2007, 2024"
     - code: "PSYC 325"
       title: "Psychopathology"
-      years: "2023-2024"
+      years: "2023-2025"
     - code: "PSYC 405"
-      title: "Mystery, Madness, and Murder"
-      years: "2024"
+      title: "Mystery, Madness, and Murder (Mason Core)"
+      years: "2024-2026"
 
 # PhD students
 students_graduated:
@@ -1420,6 +1482,15 @@ students_current:
   - name: "Kristin Carpenter"
   - name: "Amie MacKay"
   - name: "Dan Singer"
+  - name: "Spencer Vilim"
+  - name: "Maya Chrishawn Jones"
+  - name: "Ansley Booth"
+
+# Honors & Awards
+honors:
+  - year: 2026
+    title: "Nominee, George Mason University Teaching Excellence Award (full-time faculty)"
+    org: "Stearns Center for Teaching and Learning"
 
 # Professional affiliations
 affiliations:

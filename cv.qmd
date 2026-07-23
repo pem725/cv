@@ -93,6 +93,17 @@ for pos in positions:
 
 ---
 
+## Honors & Awards
+
+```{python}
+#| output: asis
+for h in sorted(data.get('honors', []), key=lambda x: x.get('year', 0), reverse=True):
+    org = f" — {h['org']}" if h.get('org') else ""
+    print(f"**{h['year']}.** {h['title']}{org}\n")
+```
+
+---
+
 ## Books
 
 ```{python}
@@ -115,6 +126,8 @@ for ch in chapters:
     editors = ch.get('editors', ch.get('editor', ''))
     cite = f"{ch['authors']} ({ch['year']}). {ch['title']}. "
     cite += f"In {editors} (Eds.), *{ch['book']}*. {ch['publisher']}."
+    if ch.get('status'):
+        cite = cite.rstrip('.') + f" ({ch['status']})."
     cite_count = f" *[{ch['citations']} citations]*" if ch.get('citations') else ""
     print(f"- {cite}{cite_count}\n")
 ```
@@ -166,11 +179,23 @@ for p in proceedings:
 
 ---
 
-<!-- Manuscripts Under Review / In Preparation: intentionally NOT rendered (held 2026-07-18).
-     The submitted: and in_preparation: lists in publications.yaml come from the archival CV
-     and are historical/stale (some ~20 years old, never appeared). Prune/update those entries
-     in publications.yaml, then restore render sections here that loop over
-     data['publications']['submitted'] and data['publications']['in_preparation']. -->
+## Manuscripts Under Review
+
+```{python}
+#| output: asis
+for m in data['publications'].get('under_review', []):
+    auth = m['authors'].rstrip()
+    yr = f" ({m['year']})" if m.get('year') else ""
+    venue = m.get('venue', '')
+    at = f" *{venue}*." if venue and venue.lower() != 'under review' else " *Under review*."
+    note = f" [{m['note']}]" if m.get('note') else ""
+    print(f"- {auth}{yr}. {m['title']}.{at}{note}\n")
+```
+
+<!-- historical_submitted / historical_in_preparation in publications.yaml are archival
+     (some ~20 years old, never appeared) and are intentionally NOT rendered. -->
+
+---
 
 ## Preprints & Working Papers
 
