@@ -132,12 +132,12 @@ publications:
       category: "methodology"
 
   articles:
-    - authors: "Crane, N.B., & McKnight, P."
-      year: 2012
-      title: "Impact of self-assembly process errors on thermoelectric performance"
-      journal: "Journal of Electronic Packaging, Transactions of the ASME"
-      doi: "10.1115/1.4006709"
-      category: "TODO"  # <- ORCID import: set category
+    - authors: "Kashdan, T.B., McKnight, P.E., & Harrison, S.H."
+      year: 2026
+      title: "Curiosity at work: A productive inefficiency model"
+      journal: "Annual Review of Organizational Psychology and Organizational Behavior"
+      doi: "10.1146/annurev-orgpsych-012825-104832"
+      category: "curiosity"
     - authors: "Kashdan, T.B., & McKnight, P.E."
       year: 2026
       title: "Prejudice against jagged personality profiles: Rethinking bias in psychological research and clinical practice"
@@ -1251,6 +1251,11 @@ publications:
       title: "Happiness and Purpose in Life: Overlapping Self-Regulatory Traits in a Two-Year Longitudinal Study"
       venue: "SSRN preprint"
       doi: "10.2139/ssrn.6442491"
+    - authors: "Simpson, R., Cowden, R.G., Psimopoulos, C., Lomas, T., Moore, M., Ashfield, A., VanderWeele, T.J., Kashdan, T.B., & McKnight, P.E."
+      year: 2026
+      title: "Sport for Flourishing: Challenges, Considerations, and Calls to Action"
+      venue: "PsyArXiv preprint"
+      doi: "10.31234/osf.io/szh4a_v2"
 
 # Grants
 grants:
