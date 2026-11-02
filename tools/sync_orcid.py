@@ -41,6 +41,14 @@ AUTO_APPEND_TYPES = {"journal-article"}
 # not standalone publications -- skip them from auto-append.
 SKIP_TITLE_PREFIXES = ("corrigendum", "erratum", "correction to", "retraction")
 
+# Works that ORCID lists but that are NOT Patrick's (homonyms) or were removed
+# from the CV on purpose. Without this list the weekly sync re-adds them: the
+# Crane 2012 homonym was removed 2026-07-18 and came back 2026-07-19.
+# Lowercase DOIs. Remove the claim on orcid.org too, then this entry can go.
+EXCLUDED_DOIS = {
+    "10.1115/1.4006709",  # Crane & McKnight 2012, thermoelectrics: a USF mechanical engineer
+}
+
 
 # ---------------------------------------------------------------------------
 # ORCID fetching
@@ -269,6 +277,10 @@ def main():
     yaml_dois, yaml_titles = existing_keys(yaml_text)
 
     works = get_orcid_works()
+    excluded = [w for w in works if (w["doi"] or "").lower() in EXCLUDED_DOIS]
+    works = [w for w in works if (w["doi"] or "").lower() not in EXCLUDED_DOIS]
+    if excluded:
+        print(f"Excluded {len(excluded)} work(s) on the EXCLUDED_DOIS list (homonyms / removed on purpose).")
     missing = [w for w in works if not is_present(w, yaml_dois, yaml_titles)]
 
     print(f"ORCID works:        {len(works)}")
