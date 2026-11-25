@@ -1119,6 +1119,23 @@ publications:
       editors: "Trzesniewski, K.H., Donnellan, M.B., & Lucas, R.E."
       publisher: "American Psychological Association"
 
+    - authors: "McKnight, P.E. & Najab, J."
+      year: 2010
+      title: "Mann-Whitney U Test"
+      book: "The Corsini Encyclopedia of Psychology (4th ed.)"
+      editors: "Weiner, I.B. & Craighead, W.E."
+      publisher: "Wiley"
+      doi: "10.1002/9780470479216.corpsy0524"
+      citations: 2280
+
+    - authors: "McKnight, P.E. & Najab, J."
+      year: 2010
+      title: "Kruskal-Wallis Test"
+      book: "The Corsini Encyclopedia of Psychology (4th ed.)"
+      editors: "Weiner, I.B. & Craighead, W.E."
+      publisher: "Wiley"
+      doi: "10.1002/9780470479216.corpsy0491"
+
     - authors: "McKnight, K.M. & McKnight, P.E."
       year: 2009
       title: "Measures for Improving Measures"
